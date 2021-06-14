@@ -1,0 +1,34 @@
+.chart-container {
+  width: 1800px;
+  height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chart-content {
+  width: 95%;
+  height: 550px;
+}
+
+@media screen and (max-width: 1600px) {
+
+  .chart-container {
+    width: 1200px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+
+  .chart-container {
+    width: 1000px;
+  }
+}
+@media screen and (max-width: 1200px) {
+
+  .wind-content {
+    width: 900px;
+  }
+  .chart-container {
+    width: 800px;
+  }
+}

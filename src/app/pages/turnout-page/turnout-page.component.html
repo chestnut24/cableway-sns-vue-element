@@ -1,0 +1,98 @@
+<div class="content">
+    <div *ngFor="let title of titleArr;let index = index" class="content-detail">
+        <div class="content-detail-til">{{title}}{{titleArrCmp[index]}}</div>
+        <div style="display: flex">
+<!--        上下站道岔-->
+            <div class="content-detail-left" *ngIf="title=='上站道岔'||title=='下站道岔'">
+                <div class="content-detail-left-item" *ngFor="let secondTitle of secondTitleArr;let secondIndex = index">
+<!--                    '运行道岔', '出/入库(检修)道岔', '平台'的图标和标题-->
+                    <div style="display: flex;align-items: center;"> <img [src]="iconList[secondTitle]" width="30px" height="30px" style="margin-right: 10px">{{secondTitle}}</div>
+<!--                    '运行道岔', '出/入库(检修)道岔', '平台'的三个状态-->
+                    <div class="content-detail-left-status" *ngIf="secondTitle!='平台'">
+                        <div *ngFor="let status of thirdTitleArr[0];let statusIndex = index">
+<!--                            到位和离位时的状态显示-->
+                            <div style="display: flex;align-items: center;" *ngIf="status!='位置异常'">
+<!--                                false是0,true是1   1到位 不报警 绿色   0未到位 报警 白色-->
+                                <div class="status-icon" [ngStyle]="{background:((dataSource[index][secondTitleStatusList[secondIndex][statusIndex]])?.value==true)?'#6ABE04':'#ffffff'}"></div>
+                                {{status}}
+<!--                                [style]="background:(mqttService.dataDictionary[title][secondTitleStatusList[secondIndex][statusIndex]].value==true)?'#ffffff':'#6ABE04'"-->
+                            </div>
+<!--                            位置异常时的状态显示-->
+                            <div style="display: flex;align-items: center;" *ngIf="status=='位置异常'">
+<!--                              运行道岔和出入库的位置异常取运行道岔两个异常值的先或后非      false是0,true是1   1异常报警 红色   0正常 绿色-->
+                                <div class="status-icon" [ngStyle]="{background:(!(dataSource[index][secondTitleStatusList[3][0]]?.value||dataSource[index][secondTitleStatusList[3][1]]?.value)==true)?'#FF365F':'#6ABE04'}"></div> {{status}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-detail-left-status" *ngIf="secondTitle=='平台'">
+                        <div *ngFor="let status of thirdTitleArr[1];let statusIndex = index">
+                            <!--                            到位和离位时的状态显示-->
+                            <div style="display: flex;align-items: center;" *ngIf="status!='位置异常'">
+                                <!--               false是0,true是1   1到位 不报警 绿色   0未到位 报警 白色-->
+                                <div class="status-icon" [ngStyle]="{background:(dataSource[index][secondTitleStatusList[secondIndex][statusIndex]]?.value==true)?'#6ABE04':'#ffffff'}"></div>
+                                {{status}}
+                                <!--                                [style]="background:(mqttService.dataDictionary[title][secondTitleStatusList[secondIndex][statusIndex]].value==true)?'#ffffff':'#6ABE04'"-->
+                            </div>
+                            <!--                            位置异常时的状态显示-->
+                            <div style="display: flex;align-items: center;" *ngIf="status=='位置异常'">
+                                <!--        平台的位置异常取平台到位和离位值的先或后非        false是0,true是1   1异常报警 红色   0正常 绿色-->
+                                <div class="status-icon" [ngStyle]="{background:(!(dataSource[index][secondTitleStatusList[secondIndex][0]]?.value||dataSource[index][secondTitleStatusList[secondIndex][1]]?.value)==true)?'#FF365F':'#6ABE04'}"></div> {{status}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--        中间站道岔-->
+            <div class="content-detail-left" *ngIf="title=='中间站道岔'">
+                <div class="content-detail-left-item" *ngFor="let secondTitle of secondTitleArr;let secondIndex = index">
+                    <!--                    '运行道岔', '出/入库(检修)道岔', '平台'的图标和标题-->
+                    <div style="display: flex;align-items: center;"> <img [src]="iconList[secondTitle]" width="30px" height="30px" style="margin-right: 10px">{{secondTitle}}</div>
+                    <!--                    '运行道岔', '出/入库(检修)道岔', '平台'的三个状态-->
+                    <div class="content-detail-left-status" *ngIf="secondTitle!='平台'">
+                        <div *ngFor="let status of thirdTitleArr[0];let statusIndex = index">
+                            <!--                            到位和离位时的状态显示-->
+                            <div style="display: flex;align-items: center;" *ngIf="status!='位置异常'">
+                                <!--                                false是0,true是1   1到位 不报警 绿色   0未到位 报警 白色-->
+                                <div class="status-icon" *ngIf="titleArrCmp[index]=='上行'" [ngStyle]="{background:(dataSource[index][midSecondTitleStatusList[0][secondIndex][statusIndex]]?.value==true)?'#6ABE04':'#ffffff'}"></div>
+                                <div class="status-icon" *ngIf="titleArrCmp[index]=='下行'" [ngStyle]="{background:(dataSource[index][midSecondTitleStatusList[1][secondIndex][statusIndex]]?.value==true)?'#6ABE04':'#ffffff'}"></div>
+                                {{status}}
+                                <!--                                [style]="background:(mqttService.dataDictionary[title][secondTitleStatusList[secondIndex][statusIndex]].value==true)?'#ffffff':'#6ABE04'"-->
+                            </div>
+                            <!--                            位置异常时的状态显示-->
+                            <div style="display: flex;align-items: center;" *ngIf="status=='位置异常'">
+                                <!--                              运行道岔和出入库的位置异常取运行道岔两个异常值的先或后非      false是0,true是1   1异常报警 红色   0正常 绿色-->
+                                <div class="status-icon" *ngIf="titleArrCmp[index]=='上行'" [ngStyle]="{background:(!(dataSource[index][midSecondTitleStatusList[0][3][0]]?.value||dataSource[index][midSecondTitleStatusList[0][3][1]]?.value)==true)?'#FF365F':'#6ABE04'}"></div>
+                                <div class="status-icon" *ngIf="titleArrCmp[index]=='下行'" [ngStyle]="{background:(!(dataSource[index][midSecondTitleStatusList[1][3][0]]?.value||dataSource[index][midSecondTitleStatusList[1][3][1]]?.value)==true)?'#FF365F':'#6ABE04'}"></div>
+                                {{status}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-detail-left-status" *ngIf="secondTitle=='平台'">
+                        <div *ngFor="let status of thirdTitleArr[1];let statusIndex = index">
+                            <!--                            到位和离位时的状态显示-->
+                            <div style="display: flex;align-items: center;" *ngIf="status!='位置异常'">
+                                <!--               false是0,true是1   1到位 不报警 绿色   0未到位 报警 白色-->
+                                <div class="status-icon" *ngIf="titleArrCmp[index]=='上行'" [ngStyle]="{background:(dataSource[index][midSecondTitleStatusList[0][secondIndex][statusIndex]]?.value==true)?'#6ABE04':'#ffffff'}"></div>
+                                <div class="status-icon" *ngIf="titleArrCmp[index]=='下行'" [ngStyle]="{background:(dataSource[index][midSecondTitleStatusList[1][secondIndex][statusIndex]]?.value==true)?'#6ABE04':'#ffffff'}"></div>
+                                {{status}}
+                                <!--                                [style]="background:(mqttService.dataDictionary[title][secondTitleStatusList[secondIndex][statusIndex]].value==true)?'#ffffff':'#6ABE04'"-->
+                            </div>
+                            <!--                            位置异常时的状态显示-->
+                            <div style="display: flex;align-items: center;" *ngIf="status=='位置异常'">
+                                <!--        平台的位置异常取平台到位和离位值的先或后非        false是0,true是1   1异常报警 红色   0正常 绿色-->
+                                <div class="status-icon" *ngIf="titleArrCmp[index]=='上行'" [ngStyle]="{background:(!(dataSource[index][midSecondTitleStatusList[0][secondIndex][0]]?.value||dataSource[index][midSecondTitleStatusList[0][secondIndex][1]]?.value)==true)?'#FF365F':'#6ABE04'}"></div>
+                                <div class="status-icon" *ngIf="titleArrCmp[index]=='下行'" [ngStyle]="{background:(!(dataSource[index][midSecondTitleStatusList[1][secondIndex][0]]?.value||dataSource[index][midSecondTitleStatusList[1][secondIndex][1]]?.value)==true)?'#FF365F':'#6ABE04'}"></div>
+                                {{status}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!--             右侧图片的放置区域-->
+            <div class="content-detail-right">
+                <img [src]="stationImg[index]" width="100%" height="100%">
+            </div>
+        </div>
+    </div>
+</div>

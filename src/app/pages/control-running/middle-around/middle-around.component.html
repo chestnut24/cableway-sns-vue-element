@@ -1,0 +1,79 @@
+<div class="content">
+    <div class="title">旁路开关</div>
+    <div class="btn-areas">
+        <div class="btn" *ngFor="let btnItem of btnList">
+            <div class="inner">
+                <div style="font-weight: 700;    display: flex;align-items: center;">
+                    <img src="../../../../assets/images/control-running/switch-icon.png"  height="50px" style="margin-right: 10px;">
+                    <span style="width: 60%;white-space: nowrap;">{{btnItem}}</span>
+                </div>
+                <div class="status">
+                    <span class="unSelSpan">启动</span>
+                    <span class="unSelSpan">解除</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="title">其他</div>
+    <div class="btn-areas">
+        <div class="btn" *ngFor="let btnItem of otherBtnList">
+            <div class="inner">
+                <div style="font-weight: 700;   display: flex;align-items: center;">
+                    <img *ngIf="btnItem.name!='速度m/s'" src="../../../../assets/images/control-running/{{btnItem.name}}.png"  height="42px" style="margin-right: 10px;">
+                    <img *ngIf="btnItem.name=='速度m/s'" src="../../../../assets/images/control-running/速度.png"  height="42px" style="margin-right: 10px;">
+                    <div>
+                        <div >{{btnItem.name}}</div>
+                        <div *ngIf="btnItem.type=='switch'" style="color:#BEC0C7;font-weight: 400 ">上段状态下段状态</div>
+                    </div>
+
+                </div>
+                <div *ngIf="btnItem.type=='slider'" class="other-status" [ngStyle]="{width:btnItem.name=='方向'?'32%':'40%'}">
+                    <span *ngFor="let sliderItem of btnItem.sliders">{{sliderItem}}</span>
+                </div>
+                <div *ngIf="btnItem.type=='num'">
+                    <label>
+                        <input *ngIf="btnItem.name=='车数'" class="num" [disabled]="!dataSource['车数设定']" type="text" [value]="dataSource['车数设定']?.value" (input)="changeCarNum($event)">
+                    </label>
+                    <label>
+                        <input *ngIf="btnItem.name=='上段已发车数'" class="num" [disabled]="!dataSource1['上段已发']" type="text" [value]="dataSource1['上段已发']?.value" (input)="changeTopNum($event)">
+                    </label>
+                    <label>
+                        <input *ngIf="btnItem.name=='下段已发车数'" class="num" [disabled]="!dataSource1['下段已发']" type="text" [value]="dataSource1['下段已发']?.value" (input)="changeBottomNum($event)">
+                    </label>
+                    <label>
+                        <input *ngIf="btnItem.name=='速度m/s'" class="num" [disabled]="true" type="text">
+                    </label>
+                    <!--                    {{btnItem.name=='车数'?dataSource['车数设定']?.value:(btnItem.name=='上段已发车数'?dataSource1['上段已发']?.value:(btnItem.name=='下段已发车数'?dataSource1['下段已发']?.value:''))}}-->
+                </div>
+                <div *ngIf="btnItem.type=='switch'">
+                    <nz-switch [ngModel]="false" [nzControl]="true"></nz-switch>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fixed-tree">
+    <img src="../../../../assets/images/control-running/tree.png" width="45px" style="border-radius: 50%"/>
+<!--    <span>车厢数</span>-->
+<!--    <span> <img src="../../../../assets/images/overview/icon-right.png" height="35" width="35"/> </span>-->
+    <div class="nz-tree">
+<!--        <div class="carNum">-->
+<!--            <div>-->
+<!--                <img src="../../../../assets/images/control-running/tree-top-icon.png" width="30px" style="margin-right: 10px">-->
+<!--                上段已发车数：<div class="num" style="margin-left: 15px">{{dataSource1['上段已发']?.value}}</div>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <img src="../../../../assets/images/control-running/tree-bottom-icon.png" width="30px" style="margin-right: 10px">-->
+<!--                下段已发车数：<div class="num" style="margin-left: 15px">{{dataSource1['下段已发']?.value}}</div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="carNum">
+            <div class="til">
+                <img src="../../../../assets/images/control-running/tree.png"  height="45px" style="margin-right: 10px;">已开启-旁路开关
+            </div>
+            <div style="color: #c6c6c6;margin-top: 15px;">暂无数据</div>
+        </div>
+    </div>
+</div>

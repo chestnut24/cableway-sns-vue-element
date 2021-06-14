@@ -1,0 +1,227 @@
+.content{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  //justify-content: space-around;
+  margin-top: 10px;
+  .content-til{
+    //margin: 25px 0px 15px;
+    font-size: 18px;
+    color: #293449;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .signal-status{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    .opened-signal{
+      //width: 525px;
+      width: 28%;
+      padding: 20px 0 10px 45px;
+      background: white;
+      //height: 280px;
+      margin: 20px 0;
+      .opened-signal-brake{
+        background: #F8F9F9;
+        height: 90px;
+        //width: 440px;
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px 0px;
+        padding: 0px 20px;
+        position: relative;
+        .opened-signal-brake-spans{
+          margin-left: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        .opened-signal-brake-btn{
+          width: 100px;
+          height: 35px;
+          color: white;
+          background:#5184F7 ;
+          line-height: 35px;
+          text-align: center;
+          border-radius: 20px;
+        }
+      }
+    }
+    .running-status{
+      //width: 1315px;
+      width: 70%;
+      //width: 915px;
+      padding-left: 45px;
+      background: white;
+      //height: 260px;
+      padding-top: 20px;
+      margin: 20px 0;
+      .status-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+        .running-status-cols{
+          //height: 170px;
+          //margin: 0 20px 20px 0;
+          margin-right: 20px;
+          .running-status-cols-item{
+            background: #F8F9F9;
+            width: 270px;
+            height: 40px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            .status-icon{
+              width:15px;
+              height: 15px;
+              border-radius: 50%;
+              background: white;
+              margin-right: 15px;
+              margin-left: 30px;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+  }
+  //主电机样式
+  .main-motor{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .content-detail{
+      //width: 920px;
+      width: 50%;
+      height: 530px;
+      //margin-right: 20px;
+      margin: 8px 0;
+      padding-left: 30px;
+      background: white;
+      .content-detail-til{
+        margin: 20px 0px 20px;
+        padding-left: 20px;
+        font-size: 18px;
+        color: #293449;
+        font-weight: 700;
+      }
+      .content-detail-info{
+        .speed-elect{
+          display: flex;
+          justify-content: space-around;
+          width: 96%;
+          .speed-elect-item{
+            width: 390px;
+            height: 120px;
+            background:#F8F9F9 ;
+            .til{
+              margin: 15px 0 0 40px;
+              font-weight: 700;
+            }
+            .content{
+              width: 80%;
+              display: flex;
+              justify-content: space-between;
+              margin-left: 40px;
+              color: #5184F7;
+              font-size: 28px;
+              font-weight: 700;
+              .content-btn{
+                width: 90px;
+                height: 35px;
+                text-align: center;
+                line-height: 35px;
+                border-radius: 20px;
+                font-size: 12px;
+                background: #DFEFFF;
+                color: #5184F7;
+                border: 1px solid #5184F7;
+                cursor: pointer;
+              }
+            }
+            .unit-span {
+              color: #8A909B;
+              font-size: 10px;
+              font-weight: 400;
+              margin-left: 15px;
+            }
+          }
+        }
+        .temp-monitor{
+          .temp-content {
+            display: flex;
+            width: 100%;
+            margin-top: 10px;
+            .content-til-item-content {
+              width: 47%;
+              .content-til-item{
+                height: 52px;
+                margin-left: 20px;
+                padding-left: 40px;
+                line-height: 52px;
+                border-bottom: 1px solid #F6F6F7;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1200px)  {
+  .opened-signal {
+    width: 37% !important;
+    padding-left: 35px!important;
+    .opened-signal-brake {
+      margin: 10px auto !important;
+    }
+  }
+  .running-status {
+    width: 63%!important;
+    .status-content {
+      justify-content: space-around!important;
+    }
+  }
+  .running-status-cols {
+    margin: 0 20px 20px 0;
+    .running-status-cols-item {
+      width: 240px!important;
+    }
+  }
+
+  //.content-detail {
+  //  width: 100% !important;
+  //}
+
+  .signal-status {
+    justify-content: center!important;
+  }
+  .main-motor {
+    justify-content: center!important;
+  }
+  .content-detail {
+    padding-left: 20px!important;
+  }
+  .speed-elect-item {
+    .content {
+      margin: 20px!important;
+      width: 82% !important;
+    }
+    .content-num {
+      font-size: 22px!important;
+    }
+    .content-btn {
+      width: 80px!important;
+    }
+    .unit-span {
+      margin-left: 5px!important;
+    }
+  }
+}

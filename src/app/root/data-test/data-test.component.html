@@ -1,0 +1,17 @@
+<h1 *ngIf="!dataSourceTitle.length">欢迎来到测试页面，正在加载请稍后...</h1>
+<div *ngFor="let title of dataSourceTitle" style="display: flex;flex-wrap: wrap;width: 100%;">
+    <nz-card nzType="inner" style="margin-top:16px;width: 100%" [nzTitle]="title">
+        <div style="width: 100%;display: flex;flex-wrap: wrap;">
+            <div *ngFor="let obj of dataSource[title]" style="min-width: 330px;background-color: #F5F5F6;margin: 6px;padding:10px;display: flex;justify-content: space-between">
+                <span>
+                    {{obj.name}}
+                </span>
+                <nz-switch (ngModelChange)="send(obj, $event)" *ngIf="typeOf(obj.value) === 'boolean'" [ngModel]="obj.value" nzCheckedChildren="真" nzUnCheckedChildren="假"></nz-switch>
+                <span *ngIf="typeOf(obj.value) === 'number'">
+                    <nz-input-number style="width: 80px;text-align: center;margin-right:10px;" [(ngModel)]="obj.value"></nz-input-number>
+                    <button nz-button nzType="primary" (click)="send(obj, obj.value)">发送</button>
+                </span>
+            </div>
+        </div>
+    </nz-card>
+</div>

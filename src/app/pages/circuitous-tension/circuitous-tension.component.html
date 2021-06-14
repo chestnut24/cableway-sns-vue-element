@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="content-whole">
+        <div class="switch-content">
+            <div class="switch-left">
+                <div class="switch">
+                    <div
+                            class="tension-switch"
+                            [routerLink]="['./']"
+                            routerLinkActive="tension-selected"
+                            [routerLinkActiveOptions]="{exact:true}"
+                    >上站张紧</div>
+                    <div
+                            class="tension-switch"
+                            [routerLink]="['./bottom']"
+                            routerLinkActive="tension-selected"
+                            [routerLinkActiveOptions]="{exact:true}"
+                    >下站张紧</div>
+                </div>
+            </div>
+            <div class="switch-blank"></div>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

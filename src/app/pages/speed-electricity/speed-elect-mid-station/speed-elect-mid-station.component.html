@@ -1,0 +1,136 @@
+<div class="content">
+    <!--    中间站开闸信号、中间站运行状态-->
+    <div class="signal-status">
+        <div class="opened-signal">
+            <div class="content-til">中间站开闸信号</div>
+            <div class="opened-signal-brake">
+                <div style="display: flex">
+                    <img src="../../../../assets/images/speedIcon.png" width="60px" height="60px">
+                    <div class="opened-signal-brake-spans">
+                        <span style="font-weight: 700">低速闸</span>
+                        <!--               false是0,true是1   1绿色   0红色-->
+                        <span [ngStyle]="{color:openSignalData['低速闸开闸抱闸动作']?.value==true?'#6ABE04':'#FF365F'}">开闸</span>
+                    </div>
+                </div>
+                <div class="opened-signal-brake-btn" [ngStyle]="{background:openSignalData['低速闸到位信号']?.value==true?'#5184F7':'#FF365F'}">
+                    {{openSignalData['低速闸到位信号']?.value==true?'开到位':'关到位'}}
+                </div>
+            </div>
+            <div class="opened-signal-brake">
+                <div style="display: flex">
+                    <img src="../../../../assets/images/speedIcon.png" width="60px" height="60px">
+                    <div class="opened-signal-brake-spans">
+                        <span style="font-weight: 700">高速闸</span>
+                        <span [ngStyle]="{color:openSignalData['高速闸开闸抱闸动作']?.value==true?'#6ABE04':'#FF365F'}">开闸</span>
+                    </div>
+                </div>
+                <div class="opened-signal-brake-btn" [ngStyle]="{background:openSignalData['高速闸到位信号']?.value==true?'#5184F7':'#FF365F'}">
+                    {{openSignalData['高速闸到位信号']?.value==true?'开到位':'关到位'}}
+                </div>
+            </div>
+        </div>
+        <div class="running-status">
+            <div class="content-til">中间站运行状态</div>
+<!--            false是0 -->
+<!--            false时显示为绿色的：风机运行、整流电源异常、超速、整流柜故障-->
+<!--            false时显示为红色的：零速、主回路投入、允许运行-->
+<!--            false时显示为无状态的：手动、低速、高速1、高速2 true为绿色-->
+            <div class="status-content">
+                <div class="running-status-cols" *ngFor="let statusList of statusList;let statusIndex = index">
+                    <div class="running-status-cols-item" *ngFor="let statusItem of statusList;let itemIndex = index">
+                        <div class="status-icon" [ngStyle]="{background:runStateData[statusItem]?.value==true ? judgePoint(statusItem, true) : judgePoint(statusItem, false)}"></div>
+                        {{statusItem}}
+                        <span style="margin-left: 10px">{{statusIndex==0?statusListCmp[itemIndex]:''}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-motor">
+        <div class="content-detail">
+            <div class="content-detail-til">中间站1#主电机</div>
+            <div class="content-detail-info">
+                <div class="speed-elect">
+                    <div class="speed-elect-item">
+                        <div class="til">运行速度</div>
+                        <div class="content">
+                            <div class="content-num">
+                                {{motorData[0]['运行速度']?.value}}
+                                <span class="unit-span">m/s</span>
+                            </div>
+                            <div class="content-btn" (click)="showModal('中站主电机', '中站1', '速度')">曲线</div>
+                        </div>
+                    </div>
+                    <div class="speed-elect-item">
+                        <div class="til">运行电流</div>
+                        <div class="content">
+                            <div class="content-num">
+                                {{motorData[1]['运行电流']?.value}}
+                                <span class="unit-span">A</span>
+                            </div>
+                            <div class="content-btn" (click)="showModal('中站主电机', '中站1', '电流')">曲线</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="temp-monitor">
+                    <div class="content-til" style="margin: 20px 0 0 60px">温度监控</div>
+                    <div class="temp-content">
+                        <div class="content-til-item-content">
+                            <div class="content-til-item" *ngFor="let tempItem of tempList">
+                                {{tempItem}}(℃)
+                            </div>
+                        </div>
+                        <div class="content-til-item-content">
+                            <div class="content-til-item" *ngFor="let tempName of motorTem1; let tempIndex = index">
+                                {{motorData[tempIndex+2][tempList[tempIndex]]?.value}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-detail">
+            <div class="content-detail-til">中间站2#主电机</div>
+            <div class="content-detail-info">
+                <div class="speed-elect">
+                    <div class="speed-elect-item">
+                        <div class="til">运行速度</div>
+                        <div class="content">
+                            <div class="content-num">
+                                {{motorData[1]['运行速度']?.value}}
+                                <span class="unit-span">m/s</span>
+                            </div>
+                            <div class="content-btn" (click)="showModal('中站主电机', '中站2', '速度')">曲线</div>
+                        </div>
+                    </div>
+                    <div class="speed-elect-item">
+                        <div class="til">运行电流</div>
+                        <div class="content">
+                            <div class="content-num">
+                                {{motorData[2]['运行电流']?.value}}
+                                <span class="unit-span">A</span>
+                            </div>
+                            <div class="content-btn" (click)="showModal('中站主电机', '中站2', '电流')">曲线</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="temp-monitor">
+                    <div class="content-til" style="margin: 20px 0 0 60px">温度监控</div>
+                    <div class="temp-content">
+                        <div class="content-til-item-content">
+                            <div class="content-til-item" *ngFor="let tempItem of tempList">
+                                {{tempItem}}(℃)
+                            </div>
+                        </div>
+                        <div class="content-til-item-content">
+                            <div class="content-til-item" *ngFor="let tempName of motorTem2; let tempIndex = index">
+                                {{motorData[tempIndex+3][tempList[tempIndex]]?.value}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,35 @@
+<div class="content">
+    <div *ngFor="let title of tilList;let index = index" class="content-detail">
+        <div class="content-detail-til">{{title}}</div>
+        <div class="content-detail-info">
+            <!--               false是0,true是1   1启动   0停止-->
+            <div class="content-detail-info-switch">进站侧抱索力测试
+                <nz-switch *ngIf="dataSource[title+'进站侧抱索力测试启动/停止']" [(ngModel)]="dataSource[title+'进站侧抱索力测试启动/停止'].value" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+                <nz-switch *ngIf="!dataSource[title+'进站侧抱索力测试启动/停止']" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+            </div>
+            <div>
+                <div class="content-detail-info-speed">实际值(kg)  <span>{{dataSource[title+'进站实际值']?.value}}</span></div>
+                <div class="content-detail-info-speed">参考值(kg)  <span>{{dataSource[title+'进站参考值']?.value}}</span></div>
+            </div>
+            <div style="margin-left: 110px;display: flex;align-items: center">
+                <!--               false是0,true是1   1故障红色   0正常绿色-->
+                <div class="status-icon" [ngStyle]="{background:(dataSource[tilListCmp[index]+'进站侧传感器异常']?.value==true)?'#FF365F':'#6ABE04'}"></div>
+                进站侧传感器异常
+            </div>
+        </div>
+        <div class="content-detail-info">
+            <div class="content-detail-info-switch">出站侧抱索力测试
+                <nz-switch *ngIf="dataSource[title+'出站侧抱索力测试启动/停止']" [(ngModel)]="dataSource[title+'出站侧抱索力测试启动/停止'].value" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+                <nz-switch *ngIf="!dataSource[title+'出站侧抱索力测试启动/停止']" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+            </div>
+            <div>
+                <div class="content-detail-info-speed">实际值(kg)  <span>{{dataSource[title+'出站实际值']?.value}}</span></div>
+                <div class="content-detail-info-speed">参考值(kg)  <span>{{dataSource[title+'出站参考值']?.value}}</span></div>
+            </div>
+            <div style="margin-left: 110px;display: flex;align-items: center">
+                <div class="status-icon" [ngStyle]="{background:dataSource[tilListCmp[index]+'出站侧传感器异常']?.value==true?'#FF365F':'#6ABE04'}"></div>
+                出站侧传感器异常
+            </div>
+        </div>
+    </div>
+</div>

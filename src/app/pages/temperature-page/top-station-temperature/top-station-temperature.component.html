@@ -1,0 +1,534 @@
+<div class="frame">
+    <div class="frame-left">
+        <div class="station-frame">
+            <div class="title-frame">
+                <span style="font-size: 20px">1#主电机</span>
+            </div>
+            <div class="all-temperature-frame">
+                <div class="temperature-show-frame" *ngIf="MainMonitor1.frontExist">
+                    <div class="temperature-title">
+                        <span>前轴温度(℃)<b>{{MainMonitor1.frontAxleTemp}}</b></span>
+                    </div>
+                    <div class="temperature-frame">
+                        <div class="scale-frame">
+                            <span>120</span>
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+                            <span>-20</span>
+                            <span>-40</span>
+                        </div>
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar" *ngIf="MainMonitor1.frontAxleTemp < 90">
+                                <strong class="bar" [style.height]="MainMonitor1.frontHeight" *ngIf="MainMonitor1.frontAxleTemp < 90"></strong>
+                            </div>
+                            <div class="loadBarWarning" *ngIf="!(MainMonitor1.frontAxleTemp < 90)">
+                                <strong class="barWarning" [style.height]="MainMonitor1.frontHeight" *ngIf="!(MainMonitor1.frontAxleTemp < 90)"></strong>
+                            </div>
+                        </div>
+                        <div class="actual-temp">
+                            <span class="line"></span>
+                            <span><b>{{MainMonitor1.frontAxleTemp}}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="temperature-show-frame" *ngIf="MainMonitor1.backExist">
+                    <div class="temperature-title">
+                        <span>后轴温度(℃)<b>{{MainMonitor1.backAxleTemp}}</b></span>
+                    </div>
+                    <div class="temperature-frame">
+                        <div class="scale-frame">
+                            <span>120</span>
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+                            <span>-20</span>
+                            <span>-40</span>
+                        </div>
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar" *ngIf="MainMonitor1.backAxleTemp < 90">
+                                <strong class="bar" [style.height]="MainMonitor1.backHeight" *ngIf="MainMonitor1.backAxleTemp < 90"></strong>
+                            </div>
+                            <div class="loadBarWarning" *ngIf="!(MainMonitor1.backAxleTemp < 90)">
+                                <strong class="barWarning" [style.height]="MainMonitor1.backHeight" *ngIf="!(MainMonitor1.backAxleTemp < 90)"></strong>
+                            </div>
+                        </div>
+                        <div class="actual-temp">
+                            <span class="line"></span>
+                            <span><b>{{MainMonitor1.backAxleTemp}}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="temperature-show-frame" *ngIf="MainMonitor1.winding1Exist">
+                    <div class="temperature-title">
+                        <span>绕组1温度(℃)<b>{{MainMonitor1.winding1Temp}}</b></span>
+                    </div>
+                    <div class="temperature-frame">
+                        <div class="scale-frame">
+                            <span>120</span>
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+                            <span>-20</span>
+                            <span>-40</span>
+                        </div>
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar" *ngIf="MainMonitor1.winding1Temp < 110">
+                                <strong class="bar" [style.height]="MainMonitor1.winding1Height" *ngIf="MainMonitor1.winding1Temp < 110"></strong>
+                            </div>
+                            <div class="loadBarWarning" *ngIf="!(MainMonitor1.winding1Temp < 110)">
+                                <strong class="barWarning" [style.height]="MainMonitor1.winding1Height" *ngIf="!(MainMonitor1.winding1Temp < 110)"></strong>
+                            </div>
+                        </div>
+                        <div class="actual-temp">
+                            <span class="line"></span>
+                            <span><b>{{MainMonitor1.winding1Temp}}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="temperature-show-frame" *ngIf="MainMonitor1.winding2Exist">
+                    <div class="temperature-title">
+                        <span>绕组2温度(℃)<b>{{MainMonitor1.winding2Temp}}</b></span>
+                    </div>
+                    <div class="temperature-frame">
+                        <div class="scale-frame">
+                            <span>120</span>
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+                            <span>-20</span>
+                            <span>-40</span>
+                        </div>
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar" *ngIf="MainMonitor1.winding2Temp < 110">
+                                <strong class="bar" [style.height]="MainMonitor1.winding2Height" *ngIf="MainMonitor1.winding2Temp < 110"></strong>
+                            </div>
+                            <div class="loadBarWarning" *ngIf="!(MainMonitor1.winding2Temp < 110)">
+                                <strong class="barWarning" [style.height]="MainMonitor1.winding2Height" *ngIf="!(MainMonitor1.winding2Temp < 110)"></strong>
+                            </div>
+                        </div>
+                        <div class="actual-temp">
+                            <span class="line"></span>
+                            <span><b>{{MainMonitor1.winding2Temp}}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="temperature-show-frame" *ngIf="MainMonitor1.winding3Exist">
+                    <div class="temperature-title">
+                        <span>绕组3温度(℃)<b>{{MainMonitor1.winding3Temp}}</b></span>
+                    </div>
+                    <div class="temperature-frame">
+                        <div class="scale-frame">
+                            <span>120</span>
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+                            <span>-20</span>
+                            <span>-40</span>
+                        </div>
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar" *ngIf="MainMonitor1.winding3Temp < 110">
+                                <strong class="bar" [style.height]="MainMonitor1.winding3Height" *ngIf="MainMonitor1.winding3Temp < 110"></strong>
+                            </div>
+                            <div class="loadBarWarning" *ngIf="!(MainMonitor1.winding3Temp < 110)">
+                                <strong class="barWarning" [style.height]="MainMonitor1.winding3Height" *ngIf="!(MainMonitor1.winding3Temp < 110)"></strong>
+                            </div>
+                        </div>
+                        <div class="actual-temp">
+                            <span class="line"></span>
+                            <span><b>{{MainMonitor1.winding3Temp}}</b></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="station-frame">
+            <div class="title-frame">
+                <span style="font-size: 20px">2#主电机</span>
+            </div>
+            <div class="all-temperature-frame">
+                <div class="temperature-show-frame" *ngIf="MainMonitor2.frontExist">
+                    <div class="temperature-title">
+                        <span>前轴温度(℃)<b>{{MainMonitor2.frontAxleTemp}}</b></span>
+                    </div>
+                    <div class="temperature-frame">
+                        <div class="scale-frame">
+                            <span>120</span>
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+                            <span>-20</span>
+                            <span>-40</span>
+                        </div>
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar" *ngIf="MainMonitor2.frontAxleTemp < 90">
+                                <strong class="bar" [style.height]="MainMonitor2.frontHeight" *ngIf="MainMonitor2.frontAxleTemp < 90"></strong>
+                            </div>
+                            <div class="loadBarWarning" *ngIf="!(MainMonitor2.frontAxleTemp < 90)">
+                                <strong class="barWarning" [style.height]="MainMonitor2.frontHeight" *ngIf="!(MainMonitor2.frontAxleTemp < 90)"></strong>
+                            </div>
+                        </div>
+                        <div class="actual-temp">
+                            <span class="line"></span>
+                            <span><b>{{MainMonitor2.frontAxleTemp}}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="temperature-show-frame" *ngIf="MainMonitor2.backExist">
+                    <div class="temperature-title">
+                        <span>后轴温度(℃)<b>{{MainMonitor2.backAxleTemp}}</b></span>
+                    </div>
+                    <div class="temperature-frame">
+                        <div class="scale-frame">
+                            <span>120</span>
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+                            <span>-20</span>
+                            <span>-40</span>
+                        </div>
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar" *ngIf="MainMonitor2.backAxleTemp < 90">
+                                <strong class="bar" [style.height]="MainMonitor2.backHeight" *ngIf="MainMonitor2.backAxleTemp < 90"></strong>
+                            </div>
+                            <div class="loadBarWarning" *ngIf="!(MainMonitor2.backAxleTemp < 90)">
+                                <strong class="barWarning" [style.height]="MainMonitor2.backHeight" *ngIf="!(MainMonitor2.backAxleTemp < 90)"></strong>
+                            </div>
+                        </div>
+                        <div class="actual-temp">
+                            <span class="line"></span>
+                            <span><b>{{MainMonitor2.backAxleTemp}}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="temperature-show-frame" *ngIf="MainMonitor2.winding1Exist">
+                    <div class="temperature-title">
+                        <span>绕组1温度(℃)<b>{{MainMonitor2.winding1Temp}}</b></span>
+                    </div>
+                    <div class="temperature-frame">
+                        <div class="scale-frame">
+                            <span>120</span>
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+                            <span>-20</span>
+                            <span>-40</span>
+                        </div>
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar" *ngIf="MainMonitor2.winding1Temp < 110">
+                                <strong class="bar" [style.height]="MainMonitor2.winding1Height" *ngIf="MainMonitor2.winding1Temp < 110"></strong>
+                            </div>
+                            <div class="loadBarWarning" *ngIf="!(MainMonitor2.winding1Temp < 110)">
+                                <strong class="barWarning" [style.height]="MainMonitor2.winding1Height" *ngIf="!(MainMonitor2.winding1Temp < 110)"></strong>
+                            </div>
+                        </div>
+                        <div class="actual-temp">
+                            <span class="line"></span>
+                            <span><b>{{MainMonitor2.winding1Temp}}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="temperature-show-frame" *ngIf="MainMonitor2.winding2Exist">
+                    <div class="temperature-title">
+                        <span>绕组2温度(℃)<b>{{MainMonitor2.winding2Temp}}</b></span>
+                    </div>
+                    <div class="temperature-frame">
+                        <div class="scale-frame">
+                            <span>120</span>
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+                            <span>-20</span>
+                            <span>-40</span>
+                        </div>
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar" *ngIf="MainMonitor2.winding2Temp < 110">
+                                <strong class="bar" [style.height]="MainMonitor2.winding2Height" *ngIf="MainMonitor2.winding2Temp < 110"></strong>
+                            </div>
+                            <div class="loadBarWarning" *ngIf="!(MainMonitor2.winding2Temp < 110)">
+                                <strong class="barWarning" [style.height]="MainMonitor2.winding1Height" *ngIf="!(MainMonitor2.winding2Temp < 110)"></strong>
+                            </div>
+                        </div>
+                        <div class="actual-temp">
+                            <span class="line"></span>
+                            <span><b>{{MainMonitor2.winding2Temp}}</b></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="temperature-show-frame" *ngIf="MainMonitor2.winding3Exist">
+                    <div class="temperature-title">
+                        <span>绕组3温度(℃)<b>{{MainMonitor2.winding3Temp}}</b></span>
+                    </div>
+                    <div class="temperature-frame">
+                        <div class="scale-frame">
+                            <span>120</span>
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+                            <span>-20</span>
+                            <span>-40</span>
+                        </div>
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar" *ngIf="MainMonitor2.winding3Temp < 110">
+                                <strong class="bar" [style.height]="MainMonitor2.winding3Height" *ngIf="MainMonitor2.winding3Temp < 110"></strong>
+                            </div>
+                            <div class="loadBarWarning" *ngIf="!(MainMonitor2.winding3Temp < 110)">
+                                <strong class="barWarning" [style.height]="MainMonitor2.winding3Height" *ngIf="!(MainMonitor2.winding3Temp < 110)"></strong>
+                            </div>
+                        </div>
+                        <div class="actual-temp">
+                            <span class="line"></span>
+                            <span><b>{{MainMonitor2.winding3Temp}}</b></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="frame-right">
+        <div class="right-title">
+            <span>减速机</span>
+        </div>
+
+        <div class="flow-frame" *ngIf="flow">
+            <p style="font-size: 15px;color: white">流量正常</p>
+            <img src="../../../../assets/images/overview/liuliangzhengchang.png" height="140" width="140"/>
+        </div>
+        <div class="flow-frame-warning" *ngIf="!flow">
+            <p style="font-size: 15px;color: white">流量异常</p>
+            <img src="../../../../assets/images/overview/liuliangzhengchang.png" height="140" width="140"/>
+        </div>
+
+        <div class="device-frame">
+            <div class="device">
+                <span style="width: 20px;height: 20px;background-color: #74C605;border-radius: 10px" *ngIf="pump"></span>
+                <span style="width: 20px;height: 20px;background-color: #FF365F;border-radius: 10px" *ngIf="!pump"></span>
+                <span style="font-size: 15px">油泵</span>
+                <img src="../../../assets/images/oilPump.png" height="40" width="31" style="margin-bottom: 15px"/>
+            </div>
+            <div class="device">
+                <span style="width: 20px;height: 20px;background-color: #74C605;border-radius: 10px" *ngIf="fan"></span>
+                <span style="width: 20px;height: 20px;background-color: #FF365F;border-radius: 10px" *ngIf="!fan"></span>
+                <span style="font-size: 15px">风机</span>
+                <img src="../../../assets/images/fan.png" height="40" width="34"/>
+            </div>
+        </div>
+        <div class="speed-temperature-frame">
+            <div class="temperature">
+                <div class="temperature-title">
+                    <span>高速传动轴温（℃）{{speedTemp}}</span>
+                </div>
+                <div class="temperature-frame">
+                    <div class="scale-frame">
+                        <span>120</span>
+                        <span>100</span>
+                        <span>80</span>
+                        <span>60</span>
+                        <span>40</span>
+                        <span>20</span>
+                        <span>0</span>
+                        <span>-20</span>
+                        <span>-40</span>
+                    </div>
+                    <div class="blank-frame">
+                        <span class="long"></span>
+                        <span class="short"></span>
+                        <span class="long"></span>
+                        <span class="short"></span>
+                        <span class="long"></span>
+                        <span class="short"></span>
+                        <span class="long"></span>
+                        <span class="short"></span>
+                        <span class="long"></span>
+                        <span class="short"></span>
+                        <span class="long"></span>
+                        <span class="short"></span>
+                    </div>
+                    <div class="loadBar-frame">
+                        <div class="loadBar"  *ngIf="speedTemp < 90">
+                            <strong class="bar" [style.height]="speedHeight" *ngIf="speedTemp < 90"></strong>
+                        </div>
+                        <div class="loadBarWarning"  *ngIf="!(speedTemp < 90)">
+                            <strong class="barWarning" [style.height]="speedHeight" *ngIf="!(speedTemp < 90)"></strong>
+                        </div>
+                    </div>
+                    <div class="actual-temp">
+                        <span class="line"></span>
+                        <span>{{speedTemp}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

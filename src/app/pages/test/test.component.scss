@@ -1,0 +1,31 @@
+@mixin tabItemClass(){
+  width: 100px;
+  height: 32px;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 32px;
+  margin: 0 8px;
+  outline:none;
+}
+.tab{
+  width: 100%;
+  background: #ffffff;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .tabUnSelect.tabSelect{
+    @include tabItemClass();
+    background:#5184F7;
+    color: white;
+  }
+  .tabUnSelect{
+    @include tabItemClass();
+    background:#EAECF4;
+    color: #828898;
+  }
+  .tabUnSelect:hover,.tabSelect:hover{
+    cursor: pointer;
+  }
+}
+

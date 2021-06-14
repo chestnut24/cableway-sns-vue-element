@@ -1,0 +1,54 @@
+<div class="overview-container">
+    <div class="top">
+        <div class="station-status" style="margin-right:20px;">
+            <div style="display: flex;align-items: center;margin-right:4px;">
+                <img src="../../../assets/images/overview/top-station.png">
+            </div>
+            <div>
+                <div>上站</div>
+                <div *ngIf="dataSource['上站驱动正转']?.value && !dataSource['上站驱动反转']?.value" style="color: #5184F7">正转</div>
+                <div *ngIf="dataSource['上站驱动反转']?.value && !dataSource['上站驱动正转']?.value" style="color: #5184F7">反转</div>
+                <div *ngIf="!dataSource['上站驱动正转']?.value && !dataSource['上站驱动正转']?.value" style="color: red">停止运行</div>
+            </div>
+        </div>
+        <div class="station-status">
+            <div style="display: flex;align-items: center;margin-right:4px;">
+                <img src="../../../assets/images/overview/mid-station.png">
+            </div>
+            <div>
+                <div>中间站</div>
+                <div *ngIf="dataSource['中站驱动正转']?.value && !dataSource['中站驱动反转']?.value" style="color: #5184F7">正转</div>
+                <div *ngIf="dataSource['中站驱动反转']?.value && !dataSource['中站驱动正转']?.value" style="color: #5184F7">反转</div>
+                <div *ngIf="!dataSource['中站驱动正转']?.value && !dataSource['中站驱动正转']?.value" style="color: red">停止运行</div>
+            </div>
+        </div>
+        <div style="width:100px;"></div>
+        <nz-radio-group [(ngModel)]="radioStationValue" nzButtonStyle="solid">
+            <label nz-radio-button nzValue="top">上站</label>
+            <label nz-radio-button nzValue="mid">中间站</label>
+            <label nz-radio-button nzValue="bottom">下站</label>
+        </nz-radio-group>
+    </div>
+    <div style="padding:180px 16px 0px 16px;overflow: auto;
+                background: url('../../../../assets/images/overview/overview-background.png') repeat;
+                background-color: #F2F3F5;
+                position: absolute;top:26px;">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<div class="fixed-tree">
+    <img src="../../../../assets/images/overview/tree-icon.png" height="22" width="22"/>
+    <span>{{currentNode}}</span>
+    <span> <img src="../../../../assets/images/overview/icon-right.png" height="35" width="35"/> </span>
+    <div class="nz-tree">
+        <nz-tree style="background-color: #fff;border-radius: 8px;height:400px;overflow-y: auto" [nzData]="nodes" (nzClick)="nzEvent($event)"></nz-tree>
+    </div>
+</div>
+<div style="position: fixed;right:50px;top:400px;width: 50px; height: 50px;border-radius: 25px;
+  background-color: #fff;box-shadow:0 0 3px #000;display: flex;justify-content: center;align-items: center;">
+    <img src="../../../../assets/images/overview/icon-跳转到@2x.png" height="35" width="35"/>
+</div>
+<div style="position: fixed;right:50px;top:480px;width: 50px; height: 50px;border-radius: 25px;
+  background-color: #fff;box-shadow:0 0 3px #000;display: flex;justify-content: center;align-items: center;">
+    <img src="../../../../assets/images/overview/icon-控制运行半@2x.png" height="35" width="35"/>
+</div>

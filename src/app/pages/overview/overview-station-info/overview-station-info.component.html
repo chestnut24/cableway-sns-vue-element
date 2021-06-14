@@ -1,0 +1,192 @@
+<div class="info-container">
+    <div class="info-block">
+        <div>上站驱动</div>
+        <!-- 向左是正转 -->
+        <div>
+            <div>{{dataSource['上站驱动正向']?.value?'正转':'反转'}}</div>
+            <img *ngIf="dataSource['上站驱动正向']?.value" src="../../../../assets/images/overview/left-icon.png" height="30" width="30"/>
+            <img *ngIf="dataSource['上站驱动反向']?.value" src="../../../../assets/images/overview/right-icon.png" height="30" width="30"/>
+        </div>
+        <div>
+            <div>{{dataSource['上站驱动检修位']?.value?'检修位':dataSource['上站驱动运行位']?.value?'运行位':'旁路位'}}</div>
+            <app-overview-witch-icon
+                    [left]="dataSource['上站驱动检修位']?.value"
+                    [mid]="dataSource['上站驱动运行位']?.value"
+                    [right]="dataSource['上站驱动旁路位']?.value"
+            ></app-overview-witch-icon>
+        </div>
+        <div>
+            <div>{{dataSource['上站驱动手动']?.value?'手动':dataSource['上站驱动高速1']?.value?'高速1':'高速2'}}</div>
+            <app-overview-witch-icon
+                    [left]="dataSource['上站驱动手动']?.value"
+                    [mid]="dataSource['上站驱动高速1']?.value"
+                    [right]="dataSource['上站驱动高速2']?.value"
+            ></app-overview-witch-icon>
+        </div>
+        <div>
+            <div>{{dataSource['上站驱动车数A']?.value?'车数A':'车数B'}}</div>
+            <app-overview-witch-icon
+                    [left]="dataSource['上站驱动车数A']?.value"
+                    [right]="dataSource['上站驱动车数B']?.value"
+            ></app-overview-witch-icon>
+        </div>
+        <div>
+            <div>{{dataSource['上站驱动辅机']?.value ? '辅机':'主机'}}</div>
+            <app-overview-witch-icon
+                    [right]="dataSource['上站驱动辅机']?.value"
+                    [left]="!dataSource['上站驱动辅机']?.value"
+            ></app-overview-witch-icon>
+        </div>
+        <div>
+            <div>旁路盒</div>
+            <div>
+                <img *ngIf="dataSource['上站旁路盒']?.value" src="../../../../assets/images/overview/pangluhe-gery.png" height="30" width="30"/>
+                <img *ngIf="!dataSource['上站旁路盒']?.value" src="../../../../assets/images/overview/pangluhe-red.png" height="30" width="30"/>
+            </div>
+        </div>
+    </div>
+    <div class="info-block" style="width: 92px;">
+        <div>下站迂回</div>
+        <div>
+            <div>{{dataSource['下站迂回检修位']?.value?'检修位':dataSource['下站迂回运行位']?.value?'运行位':'旁路位'}}</div>
+            <app-overview-witch-icon
+                    [left]="dataSource['下站迂回检修位']?.value"
+                    [mid]="dataSource['下站迂回运行位']?.value"
+                    [right]="dataSource['下站迂回旁路位']?.value"
+            ></app-overview-witch-icon>
+        </div>
+        <div>
+            <div>旁路盒</div>
+            <div>
+                <img *ngIf="dataSource['下站旁路盒']?.value" src="../../../../assets/images/overview/pangluhe-gery.png" height="30" width="30"/>
+                <img *ngIf="!dataSource['下站旁路盒']?.value" src="../../../../assets/images/overview/pangluhe-red.png" height="30" width="30"/>
+            </div>
+        </div>
+    </div>
+    <div class="info-block info-block-more-width" style="width: 400px;">
+        <div>中间站</div>
+        <div>
+            <div>{{dataSource['中站驱动正向']?.value?'正转':'反转'}}</div>
+            <img *ngIf="dataSource['中站驱动正向']?.value" src="../../../../assets/images/overview/left-icon.png" height="30" width="30"/>
+            <img *ngIf="dataSource['中站驱动反向']?.value" src="../../../../assets/images/overview/right-icon.png" height="30" width="30"/>
+        </div>
+        <div>
+            <div>{{dataSource['中站驱动检修位']?.value?'检修位':dataSource['中站驱动运行位']?.value?'运行位':'旁路位'}}</div>
+            <app-overview-witch-icon
+                    [left]="dataSource['中站驱动检修位']?.value"
+                    [mid]="dataSource['中站驱动运行位']?.value"
+                    [right]="dataSource['中站驱动旁路位']?.value"
+            ></app-overview-witch-icon>
+        </div>
+        <div>
+            <div>{{dataSource['中站驱动手动']?.value?'手动':dataSource['中站驱动高速1']?.value?'高速1':'高速2'}}</div>
+            <app-overview-witch-icon
+                    [left]="dataSource['中站驱动手动']?.value"
+                    [mid]="dataSource['中站驱动高速1']?.value"
+                    [right]="dataSource['中站驱动高速2']?.value"
+            ></app-overview-witch-icon>
+        </div>
+        <div>
+            <div>{{dataSource['中站驱动车数A']?.value?'车数A':'车数B'}}</div>
+            <app-overview-witch-icon
+                    [left]="dataSource['中站驱动车数A']?.value"
+                    [right]="dataSource['中站驱动车数B']?.value"
+            ></app-overview-witch-icon>
+        </div>
+        <div>
+            <div>{{dataSource['中站驱动辅机']?.value ? '辅机':'主机'}}</div>
+            <app-overview-witch-icon
+                    [right]="dataSource['中站驱动辅机']?.value"
+                    [left]="!dataSource['中站驱动辅机']?.value"
+            ></app-overview-witch-icon>
+        </div>
+        <div style="padding-left: 0;padding-right: 0;">
+            <div>上行旁路盒</div>
+            <div>
+                <img *ngIf="dataSource['中站上行旁路盒']?.value" src="../../../../assets/images/overview/pangluhe-gery.png" height="30" width="30"/>
+                <img *ngIf="!dataSource['中站上行旁路盒']?.value" src="../../../../assets/images/overview/pangluhe-red.png" height="30" width="30"/>
+            </div>
+        </div>
+        <div style="padding-left: 0;padding-right: 0;">
+            <div>下行旁路盒</div>
+            <div>
+                <img *ngIf="dataSource['中站下行旁路盒']?.value" src="../../../../assets/images/overview/pangluhe-gery.png" height="30" width="30"/>
+                <img *ngIf="!dataSource['中站下行旁路盒']?.value" src="../../../../assets/images/overview/pangluhe-red.png" height="30" width="30"/>
+            </div>
+        </div>
+        <div style="background-color: transparent">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="status" *ngIf="hasStatus">
+        <div>状态</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>上站</td>
+                    <td>中站</td>
+                </tr>
+                <tr>
+                    <td style="width:114px;">装置准备好</td>
+                    <td><span [style.backgroundColor]="dataSource['上站装置准备好']?.value?'#6ABE04':'#B1C0D0'" class="circle"></span></td>
+                    <td><span [style.backgroundColor]="dataSource['中站装置准备好']?.value?'#6ABE04':'#B1C0D0'" class="circle"></span></td>
+                </tr>
+                <tr>
+                    <td style="width:114px;">允许运行</td>
+                    <td><span [style.backgroundColor]="dataSource['上站允许运行']?.value?'#6ABE04':'#B1C0D0'" class="circle"></span></td>
+                    <td><span [style.backgroundColor]="dataSource['中站允许运行']?.value?'#6ABE04':'#B1C0D0'" class="circle"></span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+            <tr>
+                <td></td>
+                <td>上站</td>
+                <td>中站</td>
+            </tr>
+            <tr>
+                <td style="width:114px;">上站主控</td>
+                <td><span [style.backgroundColor]="dataSource['上站-上站主控']?.value?'#6ABE04':'#B1C0D0'" class="circle"></span></td>
+                <td><span [style.backgroundColor]="dataSource['中站-上站主控']?.value?'#6ABE04':'#B1C0D0'" class="circle"></span></td>
+            </tr>
+            <tr>
+                <td style="width:114px;">中站主控</td>
+                <td><span [style.backgroundColor]="dataSource['上站-中站主控']?.value?'#6ABE04':'#B1C0D0'" class="circle"></span></td>
+                <td><span [style.backgroundColor]="dataSource['中站-中站主控']?.value?'#6ABE04':'#B1C0D0'" class="circle"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <div class="duan">
+            <div>上 <br> 段</div>
+            <div class="duan-right">
+                <div>
+                    <span [style.backgroundColor]="dataSource['上段泄压电磁阀']?.value?'red':'#6ABE04'" class="circle"></span>
+                    <span>泄压电磁阀</span>
+                </div>
+                <div>
+                    <span [style.backgroundColor]="dataSource['上段保护电磁阀']?.value?'red':'#6ABE04'" class="circle"></span>
+                    <span>保护电磁阀</span>
+                </div>
+            </div>
+        </div>
+        <div class="duan" style="margin-top:6px;">
+            <div>下 <br> 段</div>
+            <div class="duan-right">
+                <div>
+                    <span [style.backgroundColor]="dataSource['下段泄压电磁阀']?.value?'red':'#6ABE04'" class="circle"></span>
+                    <span>泄压电磁阀</span>
+                </div>
+                <div>
+                    <span [style.backgroundColor]="dataSource['下段保护电磁阀']?.value?'red':'#6ABE04'" class="circle"></span>
+                    <span>保护电磁阀</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

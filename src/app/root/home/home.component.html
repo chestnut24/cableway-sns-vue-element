@@ -1,0 +1,136 @@
+<div class="home-container">
+  <nav>
+    <img src="../../../assets/images/logo.png" style="width: 60px;height: 24px;position: relative;top:5px;"/>
+    <div style="display: flex">
+<!--        {{screen}}-->
+<!--        <button [appFullScreen]="'shiniushanbody'" nz-button nzType="primary" nzSize="small" style="margin-top: 8px;">{{isFullscreen ? '取消全屏' : '全屏'}}</button>-->
+<!--        &nbsp;&nbsp;-->
+      <span>{{currentTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        &nbsp;&nbsp;
+<!--        测试按钮-->
+        <div class="test-btn" (click)="gotoTest()" *ngIf="auth['currentUser'] === '超级管理员'">
+            <img src="../../../assets/images/testIcon.png"  style="width:20px;height:20px;margin-right: 5px"> 测试
+        </div>
+        <span>| &nbsp;</span>
+        <a class="menu-hover">
+            {{auth['currentUser'] ? auth['currentUser'] : '请登录'}}
+                <ul>
+                    <li (click)="changeUser()">切换用户</li>
+                    <li (click)="changePassword()">更改密码</li>
+                </ul>
+        </a>
+
+    </div>
+  </nav>
+  <div class="left">
+    <div class="left-content" [style.width] = "isShowLeft?'400px':'0'">
+      <div class="left-content-top">
+        <div *ngFor="let obj of leftStation" (click)="sideClick(obj.route)">
+          <img [src]="obj.url" alt="" style="width: 100%;">
+          <span>{{obj.name}}</span>
+        </div>
+      </div>
+      <h2 style="padding-left: 24px;padding-top: 24px; margin: 0">速度电流</h2>
+      <div class="left-content-mid">
+        <div style="width:200px;">
+<!--          <nz-switch [(ngModel)]="isClockwise1" nzCheckedChildren="顺" nzUnCheckedChildren="逆"></nz-switch>-->
+          <h3 style="height:36px;display: flex;align-items: center">
+            <img src="../../../assets/images/left-bar/top-electric-machinery.png" height="36" width="36"/>
+            &nbsp;
+            <span style="font-size: 18px;">上站主电机</span>
+          </h3>
+          <div class="data-list">
+            <span>速度（m/s）</span>
+            <span>{{mqttService.dataDictionary['首页左侧拉出'] ?
+                    mqttService.dataDictionary['首页左侧拉出']['上站运行速度']?.value : 0}}</span>
+          </div>
+          <div class="data-list">
+            <span>电流（A）</span>
+            <span>{{topMainMachine}}</span>
+          </div>
+          <nz-divider></nz-divider>
+<!--          <nz-switch [(ngModel)]="isClockwise2" nzCheckedChildren="顺" nzUnCheckedChildren="逆"></nz-switch>-->
+          <h3 style="height:36px;display: flex;align-items: center">
+            <img src="../../../assets/images/left-bar/mid-electric-machinery.png" height="36" width="36"/>
+            &nbsp;
+            <span style="font-size: 18px;">中间站主电机</span>
+          </h3>
+          <div class="data-list">
+            <span>速度（m/s）</span>
+            <span>{{mqttService.dataDictionary['首页左侧拉出'] ?
+                    mqttService.dataDictionary['首页左侧拉出']['中站运行速度']?.value : 0}}</span>
+          </div>
+          <div class="data-list">
+            <span>电流（A）</span>
+            <span>{{midMainMachine}}</span>
+          </div>
+          <nz-divider></nz-divider>
+        </div>
+        <div style="width:100px;position: relative;">
+<!--          <div class="electric-container">-->
+
+<!--          </div>-->
+<!--          <div class="electric-content">-->
+<!--            <div>-->
+<!--              <div></div>-->
+<!--            </div>-->
+<!--            <div><div></div></div>-->
+<!--            <div></div>-->
+<!--          </div>-->
+          <img src="../../../assets/images/left-bar/sangezhan.png" style="width:100%;">
+          <ng-container *ngIf="isClockwise1">
+            <img src="../../../assets/images/left-bar/arrow.png" height="35" width="11"
+                 style="position: absolute;z-index: 100;animation: arrow1 1.5s linear infinite">
+            <img src="../../../assets/images/left-bar/arrow.png" height="35" width="11"
+                 style="position: absolute;z-index: 100;animation: arrow2 1.5s linear infinite;transform: rotate(180deg)">
+          </ng-container>
+          <ng-container *ngIf="isClockwise2">
+            <img src="../../../assets/images/left-bar/arrow.png" height="35" width="11"
+                 style="position: absolute;z-index: 100;animation: arrow3 1.5s linear infinite;transform: rotate(180deg)">
+            <img src="../../../assets/images/left-bar/arrow.png" height="35" width="11"
+                 style="position: absolute;z-index: 100;animation: arrow4 1.5s linear infinite">
+          </ng-container>
+
+
+          <ng-container *ngIf="!isClockwise1">
+            <img src="../../../assets/images/left-bar/arrow.png" height="35" width="11"
+                 style="position: absolute;z-index: 100;animation: arrow1 1.5s linear infinite reverse;transform: rotate(180deg)">
+            <img src="../../../assets/images/left-bar/arrow.png" height="35" width="11"
+                 style="position: absolute;z-index: 100;animation: arrow2 1.5s linear infinite reverse;">
+          </ng-container>
+          <ng-container *ngIf="!isClockwise2">
+            <img src="../../../assets/images/left-bar/arrow.png" height="35" width="11"
+                 style="position: absolute;z-index: 100;animation: arrow3 1.5s linear infinite reverse;">
+            <img src="../../../assets/images/left-bar/arrow.png" height="35" width="11"
+                 style="position: absolute;z-index: 100;animation: arrow4 1.5s linear infinite reverse;transform: rotate(180deg)">
+          </ng-container>
+
+        </div>
+      </div>
+      <div class="left-content-bottom">
+        <h2>故障和警示列表</h2>
+        <div *ngFor="let obj of warnList" (click)="bottomClick('/faultList');isShowLeft=false;"
+                style="display: flex;">
+            <img src="../../../assets/images/left-bar/warning.png" width="24" height="26.78"/>
+            <span>{{obj.name}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="left-side" (click)="openLeft($event)">
+      <div class="left-after" ></div>
+    </div>
+  </div>
+  <div style="padding: 16px;padding-left: 40px;margin-bottom: 80px;height: calc(100% - 80px);overflow-y: auto;padding-top:40px;">
+    <router-outlet></router-outlet>
+  </div>
+  <footer style="z-index: 100000">
+    <ul>
+      <li *ngFor="let icon of bottomIconArr" (click)="bottomClick(icon.route);" [style.backgroundColor]="currentRoute(icon.route)?'#e6f7ff':'#fff'">
+        <img [src]="icon.url" height="48" width="48"/>
+        <div>
+          {{icon.name}}
+        </div>
+      </li>
+    </ul>
+  </footer>
+</div>

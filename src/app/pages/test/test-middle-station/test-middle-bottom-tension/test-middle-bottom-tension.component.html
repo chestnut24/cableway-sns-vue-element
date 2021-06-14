@@ -1,0 +1,20 @@
+<div class="content">
+    <div class="content-detail">
+        <div class="content-detail-til">下站驱动</div>
+        <div class="content-detail-info" *ngFor="let title of tilList;let index = index">
+            <!--               false是0,true是1   1启动   0停止-->
+            <div class="content-detail-info-switch">{{title}}测试
+                <nz-switch *ngIf="dataSource[title+'测试']" [(ngModel)]="dataSource[title+'测试'].value" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+                <nz-switch *ngIf="!dataSource[title+'测试']" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch></div>
+            <div>
+                <div class="content-detail-info-speed">{{tilListCmp[0][index]}}(MPa)  <span>{{dataSource[title+tilListCmp[0][index]]?.value}}</span></div>
+                <div class="content-detail-info-speed">{{tilListCmp[1][index]}}(MPa)  <span>{{dataSource[title+tilListCmp[1][index]]?.value}}</span></div>
+            </div>
+            <div style="margin-left: 110px;display: flex;align-items: center">
+                <!--               false是0,true是1   1故障红色   0正常绿色-->
+                <div class="status-icon" [ngStyle]="{background:dataSource[title+'异常']?.value==true?'#FF365F':'#6ABE04'}"></div>
+                {{title}}异常
+            </div>
+        </div>
+    </div>
+</div>

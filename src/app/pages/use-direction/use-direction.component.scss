@@ -1,0 +1,38 @@
+.content{
+  width: 98%;
+  height: 90%;
+  background: white;
+  margin: 10px auto;
+  padding-top: 20px;
+  .title{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 700;
+    .uploadBtn{
+      background: #5184F7;
+      border: none;
+    }
+  }
+  .table{
+    width: 95%;
+    margin: 20px auto;
+    th{
+      padding-left: 35px;
+      border-right: 1px solid #EEEFF0;
+    }
+    td{
+      padding-left: 35px;
+      border-right: 1px solid #EEEFF0;
+      .iconI{
+        color: #FC5147;
+        font-size: 18px;
+      }
+      .iconI:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}

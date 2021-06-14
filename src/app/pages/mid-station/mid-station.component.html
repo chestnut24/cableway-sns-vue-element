@@ -1,0 +1,22 @@
+<div style="position: sticky;top:0;z-index:100;margin-bottom:10px;">
+    <app-top-warning-list [dataSource]="dataSource" [titleArr]="titleArr"></app-top-warning-list>
+</div>
+<nz-card *ngFor="let title of titleArr">
+    <p><b>{{title}}</b></p>
+    <app-red-green-list [name]="key" [value]="mqttService.dataDictionary[title]"
+                        *ngFor="let key of dataSource[title]"></app-red-green-list>
+</nz-card>
+<nz-card>
+    <p><b>上行/下行异常</b></p>
+    <div style="  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;">
+        <div class="list-container" *ngFor="let data of dataSource['上行/下行异常']">
+            <span>{{data}}</span>
+            <div>
+                <nz-badge style="margin-right: 20px;" *ngIf ="data!='区域13异常'" [nzStatus]="(mqttService.dataDictionary['上行/下行异常'] ? mqttService.dataDictionary['上行/下行异常'][data+'-上行']?.value : true) ? 'error' : 'success'" [nzText]="'上行'"></nz-badge>
+                <nz-badge  [nzStatus]="(mqttService.dataDictionary['上行/下行异常'] ? mqttService.dataDictionary['上行/下行异常'][data+'-下行']?.value : true) ? 'error' : 'success'" [nzText]="'下行'"></nz-badge>
+            </div>
+        </div>
+    </div>
+</nz-card>

@@ -1,0 +1,21 @@
+<div>
+    <div class="banner1" >
+        <!-- 单纯新增 -->
+        <nz-upload nzType="drag" [nzLimit]="1" (nzChange)="handleChange($event)"
+                   [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+            <p class="ant-upload-drag-icon">
+                <i nz-icon nzType="inbox"></i>
+            </p>
+            <p class="ant-upload-text">点击或将文件拖拽到本区域</p>
+        </nz-upload>
+    </div>
+    <div class="banner2" *ngIf="isFile">
+        <div>文件：</div>
+        <div class="o-f-h">
+            <a download="文件下载" title="点击下载" [href]="getIP() + '/file/' + time()">{{getIP() + '/file/' + time()}}</a>
+            <a class="f-r">
+                <i nz-icon nzType="close" nzTheme="outline" title="点击删除" (click)="del()"></i>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div style="position: sticky;top:0;z-index:100;margin-bottom:10px;">
+  <app-top-warning-list [dataSource]="dataSource" [titleArr]="titleArr"></app-top-warning-list>
+</div>
+<nz-card *ngFor="let title of titleArr">
+  <p><b>{{title}}</b></p>
+  <app-red-green-list [name]="key" [value]="mqttService.dataDictionary[title]"
+                      *ngFor="let key of dataSource[title]"></app-red-green-list>
+</nz-card>

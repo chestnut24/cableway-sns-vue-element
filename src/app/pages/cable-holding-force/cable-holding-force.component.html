@@ -1,0 +1,100 @@
+<div class="basic-frame">
+    <button nz-button nzType="primary" class="history-button" (click)="goHistory()" >历史记录</button>
+    <div class="cable-frame" *ngFor="let title of titleArr">
+        <div class="cable-frame-up">
+            <b>{{title}}</b>
+        </div>
+        <div class="cable-frame-down">
+            <div class="frame-down-left">
+                <div class="second-title">
+                    {{dataSource[title][0]}}(Kg)
+                </div>
+                <div class="show-frame">
+                    <div class="show-frame-left">
+                        <div class="warning-frame" *ngFor="let data of reverseStationWarning[title]">
+                            <div class="warning-data">
+                                <span style="font-size: 15px"><b>{{data.data}}</b></span>
+                            </div>
+                            <div class="warning-point-red" *ngIf="!data.warning">
+
+                            </div>
+                            <div class="warning-point-green" *ngIf="data.warning">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="show-frame-right">
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar">
+                                <strong class="bar" [style.height] = "reverseStationTemp[title]"></strong>
+                            </div>
+                        </div>
+                        <div class="scale-frame" style="margin-left: 10px">
+                            <p style="margin-top: 30px"><b>报警1500</b></p>
+                            <p style="margin-top: 100px"><b>报警600</b></p>
+                            <p><b>停车500</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="frame-down-right">
+                <div class="second-title">
+                    {{dataSource[title][11]}}(Kg)
+                </div>
+                <div class="show-frame">
+                    <div class="show-frame-right">
+                        <div class="blank-frame">
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                            <span class="long"></span>
+                            <span class="short"></span>
+                        </div>
+                        <div class="loadBar-frame">
+                            <div class="loadBar">
+                                <strong class="bar" [style.height] = "directStationTemp[title]"></strong>
+                            </div>
+                        </div>
+                        <div class="scale-frame" style="margin-left: 10px">
+                            <p style="margin-top: 30px"><b>报警1500</b></p>
+                            <p style="margin-top: 100px"><b>报警600</b></p>
+                            <p><b>停车500</b></p>
+                        </div>
+                    </div>
+                        <div class="show-frame-left">
+                            <div class="warning-frame" *ngFor="let data of directStationWarning[title]">
+                                <div class="warning-data">
+                                    <span style="font-size: 15px"><b>{{data.data}}</b></span>
+                                </div>
+                                <div class="warning-point-red" *ngIf="!data.warning">
+
+                                </div>
+                                <div class="warning-point-green" *ngIf="data.warning">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

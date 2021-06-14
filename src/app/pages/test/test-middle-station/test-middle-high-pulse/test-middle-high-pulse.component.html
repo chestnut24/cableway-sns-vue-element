@@ -1,0 +1,22 @@
+<div class="content">
+    <div *ngFor="let title of tilList;let index = index" class="content-detail">
+        <div class="content-detail-til">{{title}}</div>
+        <div class="content-detail-info">
+            <!--               false是0,true是1   1启动   0停止-->
+            <div class="content-detail-info-switch">高速轮脉冲测试
+                <nz-switch *ngIf="dataSource[tilListCmp[index]+'高速轮脉冲测试启动/停止']" [(ngModel)]="dataSource[tilListCmp[index]+'高速轮脉冲测试启动/停止'].value" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+                <nz-switch *ngIf="!dataSource[tilListCmp[index]+'高速轮脉冲测试启动/停止']" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+            </div>
+            <div>
+                <div class="content-detail-info-speed">实际差值  <span>{{dataSource[tilListCmp[index]+'高速轮实际差值']?.value}}</span></div>
+                <div class="content-detail-info-speed">允许差值  <span>{{dataSource[tilListCmp[index]+'高速轮实际差值']?5:''}}</span></div>
+<!--                <div class="content-detail-info-speed">参考差值  <span>{{dataSource[tilListCmp[index]+'高速轮实际差值']?'':''}}</span></div>-->
+            </div>
+            <div style="margin-left: 110px;display: flex;align-items: center">
+                <!--               false是0,true是1   1故障红色   0正常绿色-->
+                <div class="status-icon" [ngStyle]="{background:dataSource[tilListCmp[index]+'高速轮脉冲异常']?.value==true?'#FF365F':'#6ABE04'}"></div>
+                高速轮脉冲异常
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+.drive-frame{
+  width: 99%;
+  .drive-nav{
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    .button-frame{
+      width: 300px;
+      margin: 0 auto;
+      .temperature-button{
+        height: 30px;
+        border-radius: 15px;
+        margin-left: 15px;
+
+      }
+    }
+  }
+}

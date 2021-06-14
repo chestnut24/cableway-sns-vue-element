@@ -1,0 +1,73 @@
+<div class="drive-auxiliary-frame">
+    <div class="left-frame">
+        <span style="font-size: 20px">开关</span>
+        <div class="sluice-frame">
+            <img src="../../../../assets/images/sluice.png" height="60" width="60"/>
+            <div class="name-frame">
+                <p style="font-size: 20px"><b>低速闸</b></p>
+                <p style="font-size: 15px;color: #74C605" *ngIf="openLowSpeed">开闸</p>
+                <p style="font-size: 15px;color: #FF365F" *ngIf="!openLowSpeed">抱闸</p>
+            </div>
+            <button nz-button nzType="default" class="temperature-button-open" *ngIf="stateLowSpeed">开到位</button>
+            <button nz-button nzType="default" class="temperature-button-close" *ngIf="!stateLowSpeed">关到位</button>
+        </div>
+        <div class="sluice-frame">
+            <img src="../../../../assets/images/sluice.png" height="60" width="60"/>
+            <div class="name-frame">
+                <p style="font-size: 20px"><b>高速闸</b></p>
+                <p style="font-size: 15px;color: #74C605" *ngIf="openHighSpeed">开闸</p>
+                <p style="font-size: 15px;color: #FF365F" *ngIf="!openHighSpeed">抱闸</p>
+            </div>
+            <button nz-button nzType="default" class="temperature-button-open" *ngIf="stateHighSpeed">开到位</button>
+            <button nz-button nzType="default" class="temperature-button-close" *ngIf="!stateHighSpeed">关到位</button>
+        </div>
+
+    </div>
+    <div class="right-frame">
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">操作台选择辅机</div>
+            <div nz-col nzSpan="12">操作台急停K223吸合</div>
+        </div>
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">辅机热保护F1复位（reset）</div>
+            <div nz-col nzSpan="12">操作台安停K224吸合</div>
+        </div>
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">辅机到位KM129吸合</div>
+            <div nz-col nzSpan="12">A31柜正向运行未脱开K362吸合</div>
+        </div>
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">操作台脱索K2030吸合</div>
+            <div nz-col nzSpan="12">A31柜反向运行未脱开K363吸合</div>
+        </div>
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">操作台急停K201吸合</div>
+            <div nz-col nzSpan="12">A31柜油缸限位K307吸合</div>
+        </div>
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">操作台安停S213正常</div>
+            <div nz-col nzSpan="12">A31柜按钮盒急停K306吸合</div>
+        </div>
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">操作台正停S212正常</div>
+            <div nz-col nzSpan="12">A31柜安全继电器K301-K304吸合</div>
+        </div>
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">操作台急停K209吸合</div>
+            <div nz-col nzSpan="12">A31柜手动泄压急停K326吸合</div>
+        </div>
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">操作台安停K210吸合</div>
+        </div>
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">操作台正停K214吸合</div>
+        </div>
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">A32控制柜K340不吸合</div>
+        </div>
+        <div nz-row class="row">
+            <div nz-col nzSpan="12">操作台正停K219吸合</div>
+        </div>
+
+    </div>
+</div>

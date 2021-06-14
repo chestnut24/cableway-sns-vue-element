@@ -1,0 +1,76 @@
+<div class="content">
+    <div class="content-detail">
+        <div class="content-detail-til">中站驱动单闸制动测试</div>
+        <div class="content-detail-info">
+            <div class="content-detail-info-left">
+                <!--               false是0,true是1   1启动   0停止-->
+                <div class="switch-status">
+                    <div class="content-detail-info-switch">高速闸测试
+                        <nz-switch *ngIf="dataSource['高速闸测试启动/停止']" [(ngModel)]="dataSource['高速闸测试启动/停止'].value" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+                        <nz-switch *ngIf="!dataSource['高速闸测试启动/停止']" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+                    </div>
+                    <div style="margin-left: 20px;display: flex;align-items: center">
+                        <!--               false是0,true是1   1松闸绿 0抱闸灰-->
+                        <div class="status-icon" [ngStyle]="{background:(dataSource['高速闸松闸1']?.value==true)?'#6ABE04':'#cccccc'}"></div>
+                        <div class="status-icon" [ngStyle]="{background:(dataSource['高速闸松闸2']?.value==true)?'#6ABE04':'#cccccc'}"></div>
+                        高速闸松闸
+                    </div>
+                </div>
+                <div class="switch-status">
+                    <div class="content-detail-info-switch">低速闸测试
+                        <nz-switch *ngIf="dataSource['低速闸测试启动/停止']" [(ngModel)]="dataSource['低速闸测试启动/停止'].value" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+                        <nz-switch *ngIf="!dataSource['低速闸测试启动/停止']" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+                    </div>
+                    <div style="margin-left: 20px;display: flex;align-items: center">
+                        <!--               false是0,true是1   1松闸绿 0抱闸灰-->
+                        <div class="status-icon" [ngStyle]="{background:(dataSource['低速闸松闸']?.value==true)?'#6ABE04':'#cccccc'}"></div>
+                        低速闸松闸
+                    </div>
+                </div>
+                <div>
+                    <div class="content-detail-info-speed">制动时间(s)  <span>{{dataSource['制动时间']?.value}}</span></div>
+                    <div class="content-detail-info-speed">运行速度(m/s)  <span>{{dataSource['运行速度']?.value}}</span></div>
+                </div>
+            </div>
+            <div class="content-detail-info-right">
+                <!--                速度柱状图-->
+                <div class="show-frame-right">
+                    <div class="blank-frame">
+                        <div class="blank-frame-item">7m/s <span class="long"></span></div>
+                        <div class="blank-frame-item"> <span class="short"></span></div>
+                        <div class="blank-frame-item">6m/s <span class="long"></span></div>
+                        <div class="blank-frame-item"> <span class="short"></span></div>
+                        <div class="blank-frame-item">5m/s <span class="long"></span></div>
+                        <div class="blank-frame-item"> <span class="short"></span></div>
+                        <div class="blank-frame-item">4m/s <span class="long"></span></div>
+                        <div class="blank-frame-item"> <span class="short"></span></div>
+                        <div class="blank-frame-item">3m/s <span class="long"></span></div>
+                        <div class="blank-frame-item"> <span class="short"></span></div>
+                        <div class="blank-frame-item">2m/s <span class="long"></span></div>
+                        <div class="blank-frame-item"> <span class="short"></span></div>
+                        <div class="blank-frame-item">1m/s <span class="long"></span></div>
+                        <div class="blank-frame-item"> <span class="short"></span></div>
+                        <div class="blank-frame-item">0m/s <span class="long"></span></div>
+                        <div class="blank-frame-item"> <span class="short"></span></div>
+                        <div class="blank-frame-item">-1m/s <span class="long"></span></div>
+                        <div class="blank-frame-item"> <span class="short"></span></div>
+                        <div class="blank-frame-item">-2m/s <span class="long"></span></div>
+                        <div class="blank-frame-item"> <span class="short"></span></div>
+                        <div class="blank-frame-item">-3m/s <span class="long"></span></div>
+                        <div class="blank-frame-item"> <span class="short"></span></div>
+                        <div class="blank-frame-item">-4m/s <span class="long"></span></div>
+                    </div>
+                    <div class="loadBar-frame">
+                        <div class="loadBar" [ngStyle]="{background:(dataSource['运行速度']?.value<=6.6&&dataSource['运行速度']?.value>=-3.3)?'#D4EAFF':'#FFD3DC'}">
+                            <strong class="bar" [ngStyle]="{height:setHeight(),bottom:setBottom(),background:(dataSource['运行速度']?.value<=6.6&&dataSource['运行速度']?.value>=-3.3)?'#5184F7':'#FF365F'}"></strong>
+                        </div>
+                    </div>
+                    <div class="scale-frame" style="margin-left: 10px">
+                        <div style="margin-top: 10px"><span class="right-short"></span><b>超速6.6m/s</b></div>
+                        <div style="margin-top: 229px"><span class="right-short"></span><b>超速-3.3m/s</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

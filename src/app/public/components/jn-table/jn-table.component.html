@@ -1,0 +1,24 @@
+<nz-table class="container"
+          [nzBordered]="1"
+          [nzLoading]="jnLoading && jnTable.isLoading"
+          [nzData]="jnTable.tableData"
+          [(nzPageSize)] = "jnTable.pageSize"
+          [(nzPageIndex)] = "jnTable.pageNum"
+          (nzPageIndexChange)="jnTable.search()"
+          (nzPageSizeChange)="jnTable.pageNum = 1;jnTable.search()"
+          [nzShowSizeChanger]="true"
+          [nzPageSizeOptions]="[10,15,20]"
+          [nzFrontPagination]="false"
+          [nzTotal]="jnTable.tableTotal"
+          [nzScroll]="nzScrollX ? {x : nzScrollX} : {x : '1000px'}">
+  <thead (nzSortChange)="sort($event)" nzSingleSort>
+    <tr>
+      <th [nzShowSort]="title.canSort" [nzSortKey]="title.sortField"
+          *ngFor="let title of titleList" [nzWidth]="title.width" [nzRight]="title.right">{{title.name}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-content></ng-content>
+  </tbody>
+</nz-table>
+

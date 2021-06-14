@@ -1,0 +1,15 @@
+<div style="background-color: #F2F3F5;display: flex; flex-wrap: wrap;">
+  <ng-container *ngFor="let title of titleArr">
+    <ng-container *ngFor="let key of dataSource[title]">
+      <div *ngIf="mqttService.dataDictionary[title] &&
+      mqttService.dataDictionary[title][key]?.value" class="warning-list">
+        <img src="../../../assets/images/warning-list-img.png" height="50" width="50"/>
+        <div style="margin-left:24px;">
+          <div style="font-size: 20px;font-weight: bold">{{key}}</div>
+          <div>{{title}}</div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+</div>

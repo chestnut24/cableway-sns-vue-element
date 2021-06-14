@@ -1,0 +1,93 @@
+@font-face {
+  font-family: 'elecFont';
+  src: url("../../../assets/font/digital.ttf");
+}
+
+@mixin flexColCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+.dot-green {
+  background: #6ABE04;
+}
+
+.dot-red {
+  background: #FF3636;
+}
+
+
+
+.container {
+  display: flex;
+  width: 100%;
+  background: url("../../../assets/images/circuitous-tension/grid.png") center no-repeat;
+  position: relative;
+
+  .switch-content {
+    position: absolute;
+    top: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .switch-left {
+      @include flexCenter;
+      width: 100%;
+
+      .switch {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 350px;
+        height: 62px;
+        //margin: 50px 0 180px 0;
+        margin: 25px 0 90px 0;
+        border-radius: 31px;
+        background: white;
+
+
+        .tension-switch {
+          @include flexCenter;
+          width: 160px;
+          height: 48px;
+          font-size: 20px;
+          cursor: pointer;
+          outline: none;
+          //transition: 0.1s;
+        }
+
+        .tension-selected {
+          @extend .tension-switch;
+          background: #5184F7;
+          border-radius: 24px;
+          color: white;
+        }
+      }
+    }
+    .switch-blank{
+      width: 518px;
+    }
+
+  }
+  .content-whole {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+}

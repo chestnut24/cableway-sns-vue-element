@@ -1,0 +1,12 @@
+.list-container{
+  padding:12px 20px;
+  background-color: #F8F9F9;
+  display: inline-block;
+  width: 320px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+::ng-deep.ant-badge-status-dot{
+  width:14px;
+  height:14px
+}

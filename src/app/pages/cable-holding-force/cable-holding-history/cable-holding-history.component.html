@@ -1,0 +1,73 @@
+<div class="history-frame">
+    <div>
+        <span><b>故障和警示列表</b></span>
+    </div>
+    <div class="search">
+        <div class="search-frame">
+            <div class="station-frame">
+                <span>站点：</span>
+                <nz-select  style="width: 150px;" [nzPlaceHolder]="placeHolder" [(ngModel)] = "stationPoint">
+                    <nz-option nzValue="上站" nzLabel="上站"></nz-option>
+                    <nz-option nzValue="下站" nzLabel="下站"></nz-option>
+                    <nz-option nzValue="中间站上行" nzLabel="中间站上行" ></nz-option>
+                    <nz-option nzValue="中间站下行" nzLabel="中间站下行" ></nz-option>
+                </nz-select>
+            </div>
+            <div class="exit-out-frame">
+                <span>进/出站侧：</span>
+                <nz-select  style="width: 150px;" [nzPlaceHolder]="placeHolder" [(ngModel)] = "stationDirect">
+                    <nz-option nzValue="反向出站/进站侧" nzLabel="反向出站/进站侧"></nz-option>
+                    <nz-option nzValue="正向出站/进站侧" nzLabel="正向出站/进站侧"></nz-option>
+                </nz-select>
+            </div>
+            <div class="time-frame">
+                <span>时间：</span>
+                <nz-range-picker  [(ngModel)]="dateRange" (ngModelChange)="onChange($event)" style="width: 250px" id="datePicker"></nz-range-picker>
+            </div>
+            <div class="warning-frame">
+                <span>是否报警:</span>
+                <nz-radio-group [(ngModel)]="radioValue" nzName="radiogroup"  class="nzGroup">
+                    <label nz-radio nzValue="是">是</label>
+                    <label nz-radio nzValue="否">否</label>
+                </nz-radio-group>
+            </div>
+        </div>
+        <div class="submit-frame">
+            <button nz-button nzType="default" class="export-button"  (click)="export()">导出</button>
+            <button nz-button nzType="primary" class="search-button" (click)="search()">查询</button>
+        </div>
+
+    </div>
+    <nz-table class="container"
+              #ajaxTable
+              nzShowSizeChanger
+              [nzFrontPagination]="pagination"
+              [nzData]="listOfData"
+              [nzTotal]="total"
+              [(nzPageIndex)]="pageIndex"
+              [(nzPageSize)]="pageSize"
+              (nzPageIndexChange)="searchData()"
+              (nzPageSizeChange)="searchData(true)"
+
+    >
+        <thead>
+        <tr>
+            <th nzColumnKey="name" [nzShowSort]="title.canSort" [nzSortKey]="title.sortField" *ngFor="let title of titleList"
+                [nzWidth]="title.width" [nzRight]="title.right">{{title.name}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of ajaxTable.data">
+            <td>{{ data.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.title }}</td>
+            <td>{{ data.v }}</td>
+            <td>>1500</td>
+            <td><500</td>
+            <td>{{data.alarmValue}}</td>
+
+        </tr>
+        </tbody>
+    </nz-table>
+
+</div>

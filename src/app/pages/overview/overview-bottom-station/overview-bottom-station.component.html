@@ -1,0 +1,441 @@
+<div style="display: flex;min-width:1600px;">
+    <div style="width:80px;height:400px;position: relative;">
+        <img style="position: absolute;top: -8px;" [style.top]="(dataSource['首页左侧拉出']?dataSource['首页左侧拉出']['上站正向']?.value:false)?'-8px':'384px'" src="../../../../assets/images/overview/出站左.png" height="22" width="64"/>
+        <img style="position: absolute;bottom: -7px;" [style.top]="(dataSource['首页左侧拉出']?dataSource['首页左侧拉出']['上站正向']?.value:false)?'384px':'-8px'" src="../../../../assets/images/overview/进站右.png" height="22" width="64"/>
+    </div>
+    <div class="top-overview-container">
+        <!-- 反向关门监测 -->
+        <span [style.backgroundColor]="dataSource['反向关门监测']?.value?'red':'#6ABE04'" class="position-absolute circle" style="top:-32px; left:990px;"></span>
+
+        <img class="position-absolute" style="top:-104px;left:885px;"
+             src="../../../../assets/images/overview-top-station/方向关门监测.png" height="72" width="116"/>
+
+
+        <!-- 正向关门监测 -->
+        <span [style.backgroundColor]="dataSource['正向关门监测']?.value?'red':'#6ABE04'" class="position-absolute circle" style="top:416px; left:990px;"></span>
+        <img class="position-absolute" style="top:436px;left:885px;"
+             src="../../../../assets/images/overview-top-station/正向关门监测.png" height="72" width="116"/>
+
+        <!-- 排车离合器 -->
+        <span class="position-absolute circle" style="top:416px;left:1032px;" [style.backgroundColor]="dataSource['排车圆圈']?.value?'#F8B52D':'#DCE0E4'"></span>
+        <img *ngIf="dataSource['排车离合器']?.value" class="position-absolute" style="top:440px;left:1024px;" src="../../../../assets/images/overview/gear-yellow.png" height="36" width="36"/>
+        <img *ngIf="!dataSource['排车离合器']?.value" class="position-absolute turn" style="top:440px;left:1024px;" src="../../../../assets/images/overview/gear-green.png" height="36" width="36"/>
+        <span class="position-absolute" style="top:480px;left:1014px;font-size: 18px;color:#6F7785">排车 <br> 离合器</span>
+
+        <!--租车离合器-->
+        <span class="position-absolute circle" style="top:416px;left:1210px;" [style.backgroundColor]="dataSource['阻车圆圈']?.value?'#F8B52D':'#DCE0E4'"></span>
+        <img *ngIf="dataSource['阻车离合器']?.value" class="position-absolute" style="top:440px;left:1202px;" src="../../../../assets/images/overview/gear-yellow.png" height="36" width="36"/>
+        <img *ngIf="!dataSource['阻车离合器']?.value" class="position-absolute turn" style="top:440px;left:1202px;" src="../../../../assets/images/overview/gear-green.png" height="36" width="36"/>
+        <span class="position-absolute" style="top:480px;left:1195px;font-size: 18px;color:#6F7785">阻车 <br> 离合器</span>
+
+        <div class="left">
+            <app-overview-station-info style="position:absolute;top:95px;left:140px;" [hasStatus]="false"></app-overview-station-info>
+            <div class="left-top">
+                <div class="general-div" style="width:100px;color:#959BA6">
+                    <div></div>
+                    <div>最大值</div>
+                    <div>实际值</div>
+                    <div>最小值</div>
+                    <div></div>
+                </div>
+                <div class="vertical-bar">
+                    <div></div>
+                    <div [style.backgroundColor]="dataSource['1#A行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['1#A行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['1#A行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div></div>
+                    <span class="top-title">1A</span>
+                </div>
+                <div class="vertical-bar-empty">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="vertical-bar">
+                    <div></div>
+                    <div [style.backgroundColor]="dataSource['1#B行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['1#B行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['1#B行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div></div>
+                    <span class="top-title">1B</span>
+                </div>
+                <!--下面是 1ab - 2 之间  -->
+                <div class="general-div" style="width:500px;" [ngClass]="{'shanxingyinyingTongji':dataSource['区域1计数错']?.value}">
+                    <div [style.border-color]="dataSource['区域1有车']?.value?'#6ABE04':'#6F7684'"></div>
+                    <div>{{dataSource['区域1计数脉冲最大值']?.value}}</div>
+                    <div>{{dataSource['区域1计数脉冲实际值']?.value}}</div>
+                    <div>{{dataSource['区域1计数脉冲最小值']?.value}}</div>
+                    <div></div>
+                </div>
+                <!-- 2# -->
+                <div class="vertical-bar">
+                    <div></div>
+                    <div [style.backgroundColor]="dataSource['2#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['2#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['2#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div></div>
+                    <span class="top-title">2#</span>
+                </div>
+                <!-- 2-3 之间-->
+                <div class="general-div" style="width:300px;" [ngClass]="{'shanxingyinyingTongji':dataSource['区域2计数错']?.value}">
+                    <div [style.border-color]="dataSource['区域2有车']?.value?'#6ABE04':'#6F7684'"></div>
+                    <div>{{dataSource['区域2计数脉冲最大值']?.value}}</div>
+                    <div>{{dataSource['区域2计数脉冲实际值']?.value}}</div>
+                    <div>{{dataSource['区域2计数脉冲最小值']?.value}}</div>
+                    <div></div>
+                </div>
+                <!-- 3# -->
+                <div class="vertical-bar">
+                    <div></div>
+                    <div [style.backgroundColor]="dataSource['3#A行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['3#A行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['3#A行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div></div>
+                    <span class="top-title">3#</span>
+                </div>
+                <!-- 3-4 之间-->
+                <div class="general-div" style="width:100px;" [ngClass]="{'shanxingyinyingTongji':dataSource['区域3计数错']?.value}">
+                    <div [style.border-color]="dataSource['区域3有车']?.value?'#6ABE04':'#6F7684'"></div>
+                    <div>{{dataSource['区域3计数脉冲最大值']?.value}}</div>
+                    <div>{{dataSource['区域3计数脉冲实际值']?.value}}</div>
+                    <div>{{dataSource['区域3计数脉冲最小值']?.value}}</div>
+                    <div></div>
+                </div>
+                <!-- 4# -->
+                <div class="vertical-bar">
+                    <div></div>
+                    <div [style.backgroundColor]="dataSource['4#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['4#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['4#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div></div>
+                    <span class="top-title">4#</span>
+                </div>
+                <!-- 4-5 之间-->
+                <div class="general-div" style="width:100px;" [ngClass]="{'shanxingyinyingTongji':dataSource['区域4计数错']?.value}">
+                    <div [style.border-color]="dataSource['区域4有车']?.value?'#6ABE04':'#6F7684'"></div>
+                    <div>{{dataSource['区域4计数脉冲最大值']?.value}}</div>
+                    <div>{{dataSource['区域4计数脉冲实际值']?.value}}</div>
+                    <div>{{dataSource['区域4计数脉冲最小值']?.value}}</div>
+                    <div></div>
+                </div>
+                <!-- 5# -->
+                <div class="vertical-bar">
+                    <div></div>
+                    <div [style.backgroundColor]="dataSource['5#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['5#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div [style.backgroundColor]="dataSource['5#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                    <div></div>
+                    <span class="top-title">5#</span>
+                </div>
+            </div>
+            <div class="left-bottom">
+                <div class="left-top">
+                    <div class="general-div-b" style="width:100px;color:#959BA6">
+                        <div></div>
+                        <div>最小值</div>
+                        <div>实际值</div>
+                        <div>最大值</div>
+                        <div></div>
+                    </div>
+                    <div class="vertical-bar-b">
+                        <div></div>
+                        <div [style.backgroundColor]="dataSource['15#A行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div [style.backgroundColor]="dataSource['15#A行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div [style.backgroundColor]="dataSource['15#A行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div></div>
+                        <span class="top-title" style="left:-14px">15A</span>
+                    </div>
+                    <div class="vertical-bar-empty-b">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="vertical-bar-b">
+                        <div></div>
+                        <div [style.backgroundColor]="dataSource['15#B行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div [style.backgroundColor]="dataSource['15#B行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div [style.backgroundColor]="dataSource['15#B行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div></div>
+                        <span class="top-title">15B</span>
+                    </div>
+                    <!--下面是 15ab - 14 之间  -->
+                    <div class="general-div-b" style="width:500px;" [ngClass]="{'shanxingyinyingTongji':dataSource['区域14计数错']?.value}">
+                        <div></div>
+                        <div>{{dataSource['区域14计数脉冲最小值']?.value}}</div>
+                        <div>{{dataSource['区域14计数脉冲实际值']?.value}}</div>
+                        <div>{{dataSource['区域14计数脉冲最大值']?.value}}</div>
+                        <div [style.border-color]="dataSource['区域14有车']?.value?'#6ABE04':'#6F7684'"></div>
+                    </div>
+                    <!-- 14# -->
+                    <div class="vertical-bar-b">
+                        <div></div>
+                        <div [style.backgroundColor]="dataSource['14#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div [style.backgroundColor]="dataSource['14#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div [style.backgroundColor]="dataSource['14#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div></div>
+                        <span class="top-title">14#</span>
+                    </div>
+                    <!-- 14-13 之间-->
+                    <div class="general-div-b" style="width:250px;" [ngClass]="{'shanxingyinyingTongji':dataSource['区域13计数错']?.value}">
+                        <div></div>
+                        <div>{{dataSource['区域13计数脉冲最小值']?.value}}</div>
+                        <div>{{dataSource['区域13计数脉冲实际值']?.value}}</div>
+                        <div>{{dataSource['区域13计数脉冲最大值']?.value}}</div>
+                        <div [style.border-color]="dataSource['区域13有车']?.value?'#6ABE04':'#6F7684'"></div>
+                    </div>
+                    <!-- 13# -->
+                    <div class="vertical-bar-b">
+                        <div></div>
+                        <div [style.backgroundColor]="dataSource['13#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div [style.backgroundColor]="dataSource['13#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div [style.backgroundColor]="dataSource['13#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div></div>
+                        <span class="top-title">13#</span>
+                    </div>
+                    <!-- 13-12 之间-->
+                    <div class="general-div-b" style="width:260px;" [ngClass]="{'shanxingyinyingTongji':dataSource['区域12计数错']?.value}">
+                        <div></div>
+                        <div>{{dataSource['区域12计数脉冲最小值']?.value}}</div>
+                        <div>{{dataSource['区域12计数脉冲实际值']?.value}}</div>
+                        <div>{{dataSource['区域12计数脉冲最大值']?.value}}</div>
+                        <div [style.border-color]="dataSource['区域12有车']?.value?'#6ABE04':'#6F7684'"></div>
+                    </div>
+                    <!-- 12# -->
+                    <div class="vertical-bar-b">
+                        <div></div>
+                        <div [style.backgroundColor]="dataSource['12#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div [style.backgroundColor]="dataSource['12#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div [style.backgroundColor]="dataSource['12#行程开关']?.value?'#6ABE04':'#DCE0E4'"></div>
+                        <div></div>
+                        <span class="top-title">12#</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  ===============   该转弯了   ===================  -->
+        <div class="right">
+            <span [style.backgroundColor]="dataSource['6#行程开关']?.value?'#6ABE04':'#DCE0E4'" class="right-bar" style="transform: rotate(25.714deg)"></span>
+            <span [style.backgroundColor]="dataSource['7#行程开关']?.value?'#6ABE04':'#DCE0E4'" class="right-bar" style="transform: rotate(51.428deg)"></span>
+            <span [style.backgroundColor]="dataSource['8#行程开关']?.value?'#6ABE04':'#DCE0E4'" class="right-bar" style="transform: rotate(77.142deg)"></span>
+            <span [style.backgroundColor]="dataSource['9#行程开关']?.value?'#6ABE04':'#DCE0E4'" class="right-bar" style="transform: rotate(102.857deg)"></span>
+            <span [style.backgroundColor]="dataSource['10#行程开关']?.value?'#6ABE04':'#DCE0E4'" class="right-bar" style="transform: rotate(128.571deg)"></span>
+            <span [style.backgroundColor]="dataSource['11#行程开关']?.value?'#6ABE04':'#DCE0E4'" class="right-bar" style="transform: rotate(154.285deg)"></span>
+            <span class="right-bar-number" style="left: 81px; top:-5px;">6#</span>
+            <span class="right-bar-number" style="left: 165px; top:58px;">7#</span>
+            <span class="right-bar-number" style="left: 203px; top:142px;">8#</span>
+            <span class="right-bar-number" style="left: 202px; top:235px;">9#</span>
+            <span class="right-bar-number" style="left: 163px; top:315px;">10#</span>
+            <span class="right-bar-number" style="left: 78px; top:383px;">11#</span>
+
+            <span class="right-number">
+                     <!-- 5-6# -->
+                <span style="top:19px;left:18px;">{{dataSource['区域5计数脉冲最大值']?.value}}</span>
+                <span style="top:43px;left:21px;">{{dataSource['区域5计数脉冲实际值']?.value}}</span>
+                <span style="top:68px;left:19px;">{{dataSource['区域5计数脉冲最小值']?.value}}</span>
+                <!-- 6-7# -->
+                <span style="top:55px;left:94px;">{{dataSource['区域6计数脉冲最大值']?.value}}</span>
+                <span style="top:72px;left:83px;">{{dataSource['区域6计数脉冲实际值']?.value}}</span>
+                <span style="top:91px;left:68px;">{{dataSource['区域6计数脉冲最小值']?.value}}</span>
+                <!-- 7-8# -->
+                <span style="top:116px;left:142px;">{{dataSource['区域7计数脉冲最大值']?.value}}</span>
+                <span style="top:126px;left:125px;">{{dataSource['区域7计数脉冲实际值']?.value}}</span>
+                <span style="top:135px;left:103px;">{{dataSource['区域7计数脉冲最小值']?.value}}</span>
+                <!-- 8-9# -->
+                <span style="top:187px;left:160px;">{{dataSource['区域8计数脉冲最大值']?.value}}</span>
+                <span style="top:188px;left:140px;">{{dataSource['区域8计数脉冲实际值']?.value}}</span>
+                <span style="top:189px;left:115px;">{{dataSource['区域8计数脉冲最小值']?.value}}</span>
+                <!-- 9-10# -->
+                <span style="top:259px;left:144px;">{{dataSource['区域9计数脉冲最大值']?.value}}</span>
+                <span style="top:251px;left:126px;">{{dataSource['区域9计数脉冲实际值']?.value}}</span>
+                <span style="top:240px;left:105px;">{{dataSource['区域9计数脉冲最小值']?.value}}</span>
+                <!-- 10-11# -->
+                <span style="top:321px;left:97px;">{{dataSource['区域10计数脉冲最大值']?.value}}</span>
+                <span style="top:303px;left:86px;">{{dataSource['区域10计数脉冲实际值']?.value}}</span>
+                <span style="top:285px;left:71px;">{{dataSource['区域10计数脉冲最小值']?.value}}</span>
+                <!-- 11-12# -->
+                <span style="top:358px;left:22px;">{{dataSource['区域11计数脉冲最大值']?.value}}</span>
+                <span style="top:334px;left:23px;">{{dataSource['区域11计数脉冲实际值']?.value}}</span>
+                <span style="top:311px;left:18px;">{{dataSource['区域11计数脉冲最小值']?.value}}</span>
+            </span>
+
+
+            <span style="display: flex;width: 222px;height: 222px;border-radius: 50%;background-color: rgb(242, 243, 245);
+                        position: absolute;z-index: 2000;top: 89px;left: -110px;"></span>
+            <div class="sector" [ngClass]="{'shanxingyinying':dataSource['区域5计数错']?.value}" style="z-index: 1000">
+                <div [style.border-color]="dataSource['区域5有车']?.value?'#6ABE04':'#6F7684'">
+
+                    <div>
+
+                        <div>
+
+                            <div>
+
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sector" [ngClass]="{'shanxingyinying':dataSource['区域6计数错']?.value}" style="transform: rotate(-128.572deg);z-index: 900">
+                <div [style.border-color]="dataSource['区域6有车']?.value?'#6ABE04':'#6F7684'">
+
+                    <div>
+
+                        <div>
+
+                            <div>
+
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sector" [ngClass]="{'shanxingyinying':dataSource['区域7计数错']?.value}" style="transform: rotate(-102.858deg);z-index: 800;">
+                <div [style.border-color]="dataSource['区域7有车']?.value?'#6ABE04':'#6F7684'">
+
+                    <div>
+
+                        <div>
+
+                            <div>
+
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sector" [ngClass]="{'shanxingyinying':dataSource['区域8计数错']?.value}" style="transform: rotate(-77.144deg);z-index: 700">
+                <div [style.border-color]="dataSource['区域8有车']?.value?'#6ABE04':'#6F7684'">
+
+                    <div>
+
+                        <div>
+
+                            <div>
+
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sector" [ngClass]="{'shanxingyinying':dataSource['区域9计数错']?.value}" style="transform: rotate(-51.43deg);z-index: 600">
+                <div [style.border-color]="dataSource['区域9有车']?.value?'#6ABE04':'#6F7684'">
+
+                    <div>
+
+                        <div>
+
+                            <div>
+
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sector" [ngClass]="{'shanxingyinying':dataSource['区域10计数错']?.value}" style="transform: rotate(-25.716deg);z-index: 500">
+                <div [style.border-color]="dataSource['区域10有车']?.value?'#6ABE04':'#6F7684'">
+
+                    <div>
+
+                        <div>
+
+                            <div>
+
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sector" [ngClass]="{'shanxingyinying':dataSource['区域11计数错']?.value}" style="transform: rotate(0deg);z-index: 400">
+                <div [style.border-color]="dataSource['区域11有车']?.value?'#6ABE04':'#6F7684'">
+
+                    <div>
+
+                        <div>
+
+                            <div>
+
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bottom-list">
+    <!--<div style="width: 240px;height: 240px;display: flex;justify-content: center;align-items: center;flex-wrap: wrap;border-radius: 8px;"
+         [style.backgroundColor]="dataSource['流量正常']?.value ? '#6ABE04':'#FF4D4D'">
+        <div style="width: 240px;text-align: center;color: #fff;font-size: 16px;">{{dataSource['流量正常']?.value?'流量正常':'流量异常'}}</div>
+        <img src="../../../../assets/images/overview/liuliangzhengchang.png" height="160" width="160"/>
+    </div>-->
+    <div class="bottom-list-right">
+        <div class="left-number">
+            <div *ngFor="let title of leftNumberTitle">
+                <ng-container *ngIf="title === '设定车数'">
+                    <span>设定车数</span>
+                    <span>
+                        <b>
+                            {{dataSource['中站驱动车数A']?.value ? mqttService.dataDictionary['中站总览页面']? mqttService.dataDictionary['中站总览页面']['A发车数']?.value:'' : ''}}
+                            {{dataSource['中站驱动车数B']?.value ? mqttService.dataDictionary['中站总览页面']? mqttService.dataDictionary['中站总览页面']['B发车数']?.value : '':''}}
+                        </b>
+                    </span>
+                </ng-container>
+                <ng-container *ngIf="title !== '设定车数'">
+                    <span>{{title2unit(title)}}</span>
+                    <span><b>{{dataSource[title]?.value}}</b></span>
+                </ng-container>
+            </div>
+        </div>
+        <div class="right-boolean">
+            <div>
+                <span [style.backgroundColor]="dataSource['低速闸开闸/抱闸']?.value?'#6ABE04':'red'" class="circle"></span>
+                <span>{{dataSource['低速闸开闸/抱闸']?.value?'低速闸抱闸':'低速闸开闸'}}</span>
+            </div>
+            <div>
+                <span [style.backgroundColor]="dataSource['主风机运行']?.value?'#6ABE04':'red'" class="circle"></span>
+                <span>主风机运行</span>
+            </div>
+            <div>
+                <span [style.backgroundColor]="dataSource['高速闸开闸/抱闸']?.value?'#6ABE04':'red'" class="circle"></span>
+                <span>{{dataSource['高速闸开闸/抱闸']?.value?'高速闸抱闸':'高速闸开闸'}}</span>
+            </div>
+            <div>
+                <span [style.backgroundColor]="dataSource['主机运行']?.value?'#6ABE04':'red'" class="circle"></span>
+                <span>主机运行</span>
+            </div>
+            <div>
+                <span [style.backgroundColor]="dataSource['张紧油泵(下)']?.value?'#6ABE04':'red'" class="circle"></span>
+                <span>张紧油泵(下)</span>
+            </div>
+            <div>
+                <span [style.backgroundColor]="dataSource['主润滑油泵']?.value?'#6ABE04':'red'" class="circle"></span>
+                <span>主润滑油泵</span>
+            </div>
+        </div>
+    </div>
+</div>

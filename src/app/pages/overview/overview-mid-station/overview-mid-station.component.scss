@@ -1,0 +1,225 @@
+$border-top:1px solid #C6C9CB;
+$wide-border-top:8px solid #6F7684;
+.left-top, .left, .left-bottom{
+  display: flex;
+}
+.left{
+  position: relative;
+  flex-wrap: wrap;
+  text-align: center;
+  //width:1170px;
+}
+@mixin div2to4BackgroundColor{
+  &>div{
+    background-color: #E9ECEE;
+  }
+  &>div:first-child, &>div:nth-child(5){
+    background-color: transparent;
+  }
+}
+@mixin div2to4BackgroundColor-b{
+  &>div{
+    background-color: #E9ECEE;
+  }
+  &>div:first-child, &>div:nth-child(5){
+    background-color: transparent;
+  }
+}
+.general-div{
+  @include div2to4BackgroundColor;
+  &>div{
+    border-top: $border-top;
+    height:24px;
+    color: #5184F7;
+  }
+  &>div:first-child{
+    border-top: $wide-border-top;
+    height: 15px;
+  }
+  &>div:nth-child(5){
+    border-top: $border-top;
+    height:113px;
+  }
+}
+.vertical-bar{
+  width:10px;
+  position: relative;
+  &>div{
+    height:24px;
+    background: #DCE0E4;
+  }
+  &>div:not(:first-child){
+    border-top: $border-top;
+  }
+  &>div:first-child{
+    height: 15px;
+    background: transparent;
+    border-top: $wide-border-top;
+  }
+  &>div:nth-child(5){
+    background: transparent;
+  }
+  .top-title{
+    position: absolute;
+    top:-25px;
+    left:-5px;
+    color:#4C5568;
+  }
+}
+.vertical-bar-empty{
+  width:10px;
+  &>div{
+    height:24px;
+    background: #E9ECEE;
+  }
+  &>div:not(:first-child){
+    border-top: $border-top;
+  }
+  &>div:first-child{
+    height: 15px;
+    background: transparent;
+    border-top: $wide-border-top;
+  }
+  &>div:nth-child(5){
+    background: transparent;
+  }
+}
+
+/*反转的css*/
+.general-div-b{
+  @include div2to4BackgroundColor-b;
+  &>div{
+    border-bottom: $border-top;
+    height:24px;
+    color: #5184F7;
+  }
+  &>div:nth-child(5){
+    border-bottom: $wide-border-top;
+    height: 15px;
+  }
+  &>div:nth-child(1){
+    height: 113px;
+  }
+}
+.vertical-bar-b{
+  width:10px;
+  position: relative;
+  &>div{
+    height:24px;
+    background: #DCE0E4;
+  }
+  &>div:not(:nth-child(5)){
+    border-bottom: $border-top;
+  }
+  &>div:nth-child(5){
+    height: 15px;
+    background: transparent;
+    border-bottom: $wide-border-top;
+  }
+  &>div:nth-child(1){
+    background: transparent;
+    height: 113px;
+  }
+  .top-title{
+    position: absolute;
+    bottom:-25px;
+    left:-5px;
+    color:#4C5568;
+  }
+}
+.vertical-bar-empty-b{
+  width:10px;
+  &>div{
+    height:24px;
+    background: #E9ECEE;
+  }
+  &>div:not(:nth-child(5)){
+    border-bottom: $border-top;
+  }
+  &>div:nth-child(5){
+    background: transparent;
+    border-bottom: $wide-border-top;
+    height: 15px;
+  }
+  &>div:nth-child(1){
+    background: transparent;
+    height: 113px;
+  }
+}
+.position-absolute{
+  position: absolute;
+}
+.circle{
+  display: flex;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #6ABE04;
+}
+.turn{
+  @keyframes zhuan {
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+  animation: zhuan linear 1s infinite;
+}
+.bottom-list{
+  min-width: 1600px;
+  .circle{
+    display: flex;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #6ABE04;
+    margin: 0 10px;
+  }
+  display: flex;
+  margin-top:147px;
+  margin-bottom: 86px;
+  .bottom-list-right{
+    height: 240px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-left:10px;
+    display: flex;
+    .left-number{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width:65%;
+      padding: 10px 0;
+      &>div{
+        padding:8px 15px;
+        background-color: #F5F5F6;
+        width: calc(33.3% - 20px);
+        margin: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height:45px;
+      }
+    }
+    .right-boolean{
+      width: calc(35% - 15px);
+      margin-left:14px;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px 0;
+      &>div{
+        width: calc(50% - 20px);
+        padding:8px 15px;
+        background-color: #F5F5F6;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        height: 45px;
+      }
+    }
+  }
+}
+

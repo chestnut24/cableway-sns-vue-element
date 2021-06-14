@@ -1,0 +1,11 @@
+<div class="drive-frame">
+    <div class="drive-nav">
+        <div class="button-frame">
+            <button nz-button [nzType]="typeTop" class="temperature-button"  (click)="goTop()">上站驱辅机</button>
+            <button nz-button [nzType]="typeMid" class="temperature-button"  (click)="goMid()">中间站驱辅机</button>
+        </div>
+    </div>
+    <div class="data-frame">
+        <router-outlet></router-outlet>
+    </div>
+</div>

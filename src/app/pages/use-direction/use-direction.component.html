@@ -1,0 +1,34 @@
+<div class="content">
+    <div class="title">
+        <span>使用说明</span>
+        <button nz-button nzType="primary" nzSize="default" nzShape="round" class="uploadBtn" (click)="uploadFile()">上传附件</button>
+    </div>
+    <nz-table #ajaxTable  class="table"
+              [nzFrontPagination]="pagination"
+              [nzLoading]="loading"
+              [nzData]="dataSet"
+              [nzTotal]="total"
+              [(nzPageIndex)]="pageIndex"
+              [(nzPageSize)]="pageSize"
+              (nzPageIndexChange)="searchFile()"
+              (nzPageSizeChange)="searchFile(true)"
+    >
+        <thead>
+        <tr>
+            <th>文件名称</th>
+            <th>文件地址</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of ajaxTable.data">
+            <td>{{data.fileName}}</td>
+            <td><a [href]="data.fileUrl" [download]="data.fileName">{{data.fileUrl}}</a></td>
+            <td style="display: flex">
+                <i nz-icon nzType="delete" nzTheme="outline" title="删除" class="iconI" (click)="delete(data.id)"></i>
+                <a [href]='data.fileUrl' target="_blank" style="margin-left: 10%"><i nz-icon nzType="eye" nzTheme="outline" title="预览" style="color: #8D939E;font-size: 18px;"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </nz-table>
+</div>

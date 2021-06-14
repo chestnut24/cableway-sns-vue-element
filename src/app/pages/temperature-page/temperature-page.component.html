@@ -1,0 +1,14 @@
+<div class="temperature-frame">
+    <div class="temperature-nav">
+        <div class="button-frame">
+            <button nz-button [nzType]="typeTop" class="temperature-button"  (click)="goTop()">上站温度</button>
+            <button nz-button [nzType]="typeMid" class="temperature-button"  (click)="goMid()">中间站温度</button>
+        </div>
+    </div>
+    <div class="show-frame">
+        <div class="show-frame-left">
+             <router-outlet></router-outlet>
+        </div>
+
+    </div>
+</div>

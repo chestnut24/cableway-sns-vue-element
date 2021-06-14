@@ -1,0 +1,6 @@
+<div class="tab">
+    <div *ngFor="let tabItem of tabList;let tabIndex = index" class="tabUnSelect" [routerLink]="tabItem.route" routerLinkActive="tabSelect" #rla="routerLinkActive"  [routerLinkActiveOptions]="{exact:true}">{{tabItem.til}}
+        <span *ngIf="rla.isActive==true"></span>
+    </div>
+</div>
+<router-outlet></router-outlet>

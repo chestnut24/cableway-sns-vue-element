@@ -1,0 +1,325 @@
+.top-overview-container{
+  min-width: 1500px;
+  //overflow-x: auto;
+  $border-top:1px solid #C6C9CB;
+  $wide-border-top:8px solid #6F7684;
+  box-sizing: border-box;
+  display: flex;
+  color:#5184F7;
+  text-align: center;
+  position: relative;
+  .position-absolute{
+    position: absolute;
+  }
+  .shanxingyinyingTongji{
+    &>div:nth-child(2),&>div:nth-child(3),&>div:nth-child(4){
+      background-color: #f8c4c7;
+    }
+  }
+  .turn{
+    @keyframes zhuan {
+      0%{
+        transform: rotate(0deg);
+      }
+      100%{
+        transform: rotate(360deg);
+      }
+    }
+    animation: zhuan linear 1s infinite;
+  }
+  .circle{
+    display: flex;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #6ABE04;
+  }
+  .left-top, .left, .left-bottom{
+    display: flex;
+  }
+  .left{
+    flex-wrap: wrap;
+    width:1170px;
+  }
+
+  @mixin div2to4BackgroundColor{
+    &>div{
+      background-color: #E9ECEE;
+    }
+    &>div:first-child, &>div:nth-child(5){
+      background-color: transparent;
+    }
+  }
+  @mixin div2to4BackgroundColor-b{
+    &>div{
+      background-color: #E9ECEE;
+    }
+    &>div:first-child, &>div:nth-child(5){
+      background-color: transparent;
+    }
+  }
+  .general-div{
+    @include div2to4BackgroundColor;
+    &>div{
+      border-top: $border-top;
+      height:24px;
+    }
+    &>div:first-child{
+      border-top: $wide-border-top;
+      height: 15px;
+    }
+    &>div:nth-child(5){
+      border-top: $border-top;
+      height:113px;
+    }
+  }
+  .vertical-bar{
+    width:10px;
+    position: relative;
+    &>div{
+      height:24px;
+      background: #DCE0E4;
+    }
+    &>div:not(:first-child){
+      border-top: $border-top;
+    }
+    &>div:first-child{
+      height: 15px;
+      background: transparent;
+      border-top: $wide-border-top;
+    }
+    &>div:nth-child(5){
+      background: transparent;
+    }
+    .top-title{
+      position: absolute;
+      top:-25px;
+      left:-5px;
+      color:#4C5568;
+    }
+  }
+  .vertical-bar-empty{
+    width:10px;
+    &>div{
+      height:24px;
+      background: #E9ECEE;
+    }
+    &>div:not(:first-child){
+      border-top: $border-top;
+    }
+    &>div:first-child{
+      height: 15px;
+      background: transparent;
+      border-top: $wide-border-top;
+    }
+    &>div:nth-child(5){
+      background: transparent;
+    }
+  }
+
+  /*反转的css*/
+  .general-div-b{
+    @include div2to4BackgroundColor-b;
+    &>div{
+      border-bottom: $border-top;
+      height:24px;
+    }
+    &>div:nth-child(5){
+      border-bottom: $wide-border-top;
+      height: 15px;
+    }
+    &>div:nth-child(1){
+      height: 113px;
+    }
+  }
+  .vertical-bar-b{
+    width:10px;
+    position: relative;
+    &>div{
+      height:24px;
+      background: #DCE0E4;
+    }
+    &>div:not(:nth-child(5)){
+      border-bottom: $border-top;
+    }
+    &>div:nth-child(5){
+      height: 15px;
+      background: transparent;
+      border-bottom: $wide-border-top;
+    }
+    &>div:nth-child(1){
+      background: transparent;
+      height: 113px;
+    }
+    .top-title{
+      position: absolute;
+      bottom:-25px;
+      left:-5px;
+      color:#4C5568;
+    }
+  }
+  .vertical-bar-empty-b{
+    width:10px;
+    &>div{
+      height:24px;
+      background: #E9ECEE;
+    }
+    &>div:not(:nth-child(5)){
+      border-bottom: $border-top;
+    }
+    &>div:nth-child(5){
+      background: transparent;
+      border-bottom: $wide-border-top;
+      height: 15px;
+    }
+    &>div:nth-child(1){
+      background: transparent;
+      height: 113px;
+    }
+  }
+
+
+
+  .right{
+    position: relative;
+    width:220px;
+    height: 400px;
+    overflow: hidden;
+    .sector{
+      position: absolute;
+      clip: rect(0px 400px 400px 200px);
+      transform: rotate(-154.285deg);
+      //transform-origin: 0 100%;
+      left:-200px;
+      div{
+        width:400px;
+        border:$border-top;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: #E9ECEE;
+      }
+      &>div{
+        height:400px;
+        position: relative;
+        border:$wide-border-top;
+        background-color: rgb(242, 243, 245);
+        &>div{
+          height:370px;
+          width:370px;
+          &>div{
+            height:322px;
+            width:322px;
+            &>div{
+              height:274px;
+              width:274px;
+              &>div{
+                height:226px;
+                width:226px;
+                background-color: rgb(242, 243, 245);
+              }
+            }
+          }
+        }
+      }
+    }
+    .shanxingyinying{
+      &>div{
+        &>div{
+          background-color: #f8c4c7;
+          &>div{
+            background-color: #f8c4c7;
+            &>div{
+              background-color: #f8c4c7;
+              &>div{
+              }
+            }
+          };
+        }
+      }
+    }
+
+    .right-bar{
+      background-color: #DCE0E4;
+      z-index: 2000;
+      position:absolute;
+      width:10px;
+      height: 72px;
+      left: -5px;
+      top: 16px;
+      //transform: rotate(90deg);
+      transform-origin: 5px 184px;
+    }
+    .right-bar-number{
+      z-index: 20;
+      position:absolute;
+      color:#4C5568;
+    }
+    .right-number{
+      color:#5184F7;
+      &>span{
+        position: absolute;
+        z-index:3000;
+      }
+    }
+  }
+
+}
+
+.bottom-list{
+  min-width: 1600px;
+  .circle{
+    display: flex;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #6ABE04;
+    margin: 0 10px;
+  }
+  display: flex;
+  margin-top:143px;
+  margin-bottom: 90px;
+  .bottom-list-right{
+    height: 240px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-left:10px;
+    display: flex;
+    .left-number{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width:65%;
+      padding: 10px 0;
+      &>div{
+        padding:8px 15px;
+        background-color: #F5F5F6;
+        width: calc(33.3% - 20px);
+        margin: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height:45px;
+      }
+    }
+    .right-boolean{
+      width: calc(35% - 15px);
+      margin-left:14px;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px 0;
+      &>div{
+        width: calc(50% - 20px);
+        padding:8px 15px;
+        background-color: #F5F5F6;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        height: 63px;
+      }
+    }
+  }
+}
+

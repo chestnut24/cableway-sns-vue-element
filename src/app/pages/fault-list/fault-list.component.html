@@ -1,0 +1,48 @@
+<div class="content">
+    <div class="table">
+        <div class="til" style="justify-content: space-between">
+            <div>故障和警示列表</div>
+            <div class="time-frame">
+                <span>时间：</span>
+                <nz-range-picker [(ngModel)]="dateRange" (ngModelChange)="onChange($event)" id="datePicker" style="width: 250px"></nz-range-picker>
+<!--                <button nz-button nzType="default" class="export-button" (click)="print()">打印</button>-->
+                <button nz-button nzType="default" class="export-button"  (click)="export()">导出</button>
+            </div>
+        </div>
+        <div id="table-detail">
+            <nz-table id="container"
+                      #ajaxTable
+                      [nzFrontPagination]="false"
+                      [nzData]="listOfData"
+                      [nzLoading]="loading"
+                      [nzTotal]="total"
+                      [(nzPageIndex)]="searchParams.pageNum"
+                      [(nzPageSize)]="searchParams.pageSize"
+                      (nzPageIndexChange)="changePageIndex($event)"
+                      (nzPageSizeChange)="searchData()"
+            >
+                <thead>
+                <tr>
+                    <th>报警名称</th>
+                    <th>报警模块</th>
+                    <th>报警时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of ajaxTable.data">
+                    <td>{{data.name}}</td>
+                    <td>{{data.title}}</td>
+                    <td>{{data.t | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+    <div class="guid">
+        <div class="til">
+            故障指导
+        </div>
+        <div class="img" style="margin: 20px auto;"><img src="../../../assets/images/fault-guide.png" style="width: 100%"></div>
+    </div>
+</div>
+

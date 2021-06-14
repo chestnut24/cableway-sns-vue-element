@@ -1,0 +1,6 @@
+<div class="tab">
+    <div *ngFor="let tabItem of tabList;let tabIndex = index" class="tabUnSelect" [routerLink]="tabItem.route" routerLinkActive="tabSelect">{{tabItem.til}}</div>
+    <!--    <div class="tabUnSelect" [routerLink]="['/test']" routerLinkActive="tabSelect" [routerLinkActiveOptions]="{exact:true}">上站</div>-->
+    <!--    <div class="tabUnSelect" [routerLink]="['/test/testMiddleStation']" routerLinkActive="tabSelect" [routerLinkActiveOptions]="{exact:true}">中间站</div>-->
+</div>
+<router-outlet></router-outlet>

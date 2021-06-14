@@ -1,0 +1,34 @@
+<div class="support-wind">
+    <div class="signal-top">
+        <div class="signal-content" *ngFor="let title of titleArr;let titleIndex = index">
+            <div class="signal-title">{{title}}</div>
+            <ul class="signal-item-content" nz-row>
+                <li class="signal-item" nz-col nzSpan="6" *ngFor="let item of dataSource[title]">
+                    <!--                    记得此处应该没有“！”-->
+<!--                    1红0绿-->
+                    <div class="dot-normal"
+                         [ngClass]="{'dot-red':dataList[titleIndex][item]?.value==true, 'dot-green':dataList[titleIndex][item]?.value==false}"></div>
+<!--                         [ngClass]="{'dot-red':dataList[titleIndex][item]?.value==true, 'dot-green':dataList[titleIndex][item]?.value==false}"></div>-->
+                    <span class="signal-name">{{item}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="wind-content">
+        <div class="wind-tab">
+            <span class="tab-title">风速</span>
+            <div class="switch">
+                <div
+                        class="tab-item"
+                        *ngFor="let tabItem of tabList"
+                        [routerLink]="tabItem.path"
+                        routerLinkActive="tab-selected"
+                        [routerLinkActiveOptions]="{exact:true}"
+                >{{tabItem.name}}</div>
+            </div>
+            <span class="date">{{nowDate}}</span>
+        </div>
+<!--        <app-top-support18 [setTime]="setTime"></app-top-support18>-->
+        <router-outlet></router-outlet>
+    </div>
+</div>

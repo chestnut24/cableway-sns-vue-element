@@ -1,0 +1,59 @@
+.content{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 25px;
+  .content-detail{
+    width: 850px;
+    height:250px;
+    //margin-right: 20px;
+    margin-bottom: 20px;
+    padding-left: 60px;
+    background: white;
+    .content-detail-til{
+      margin: 35px 0px 20px;
+      font-size: 14px;
+      color: #293449;
+      font-weight: 700;
+    }
+    .content-detail-info{
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      height: 130px;
+      color: #596071;
+      .content-detail-info-switch{
+        width: 150px;
+        margin-right: 80px;
+      }
+      .content-detail-info-speed{
+        background: #F5F5F6;
+        height: 45px;
+        width: 240px;
+        display: flex;
+        align-items: center;
+        margin: 5px 0px;
+        padding-left: 20px;
+        position: relative;
+        span{
+          font-weight: 700;
+          position: absolute;
+          left: 160px;
+        }
+      }
+      .status-icon{
+        width:10px;
+        height: 10px;
+        border-radius: 50%;
+        background: white;
+        margin-right: 10px;
+      }
+    }
+
+  }
+}
+//修改ng-zorro开关选中后的默认颜色
+:host ::ng-deep .ant-switch-checked{
+  background: #6ABE04;
+}

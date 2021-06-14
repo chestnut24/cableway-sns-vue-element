@@ -1,0 +1,36 @@
+<div class="content">
+    <div *ngFor="let title of tilList;let index = index" class="content-detail">
+        <div class="content-detail-til">{{title}}</div>
+        <div class="content-detail-info">
+            <!--               false是0,true是1   1启动   0停止-->
+            <div class="content-detail-info-switch">超速测试
+                <nz-switch *ngIf="dataSource[title+'超速测试启动/停止']" [(ngModel)]="dataSource[title+'超速测试启动/停止'].value" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+                <nz-switch *ngIf="!dataSource[title+'超速测试启动/停止']" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+            </div>
+            <div>
+                <div class="content-detail-info-speed">实际速度(m/s)  <span>{{dataSource[title+'超速测试实际速度']?.value}}</span></div>
+                <div class="content-detail-info-speed">参考速度(m/s)  <span>{{dataSource[title+'超速测试参考速度']?.value}}</span></div>
+            </div>
+            <div style="margin-left: 110px;display: flex;align-items: center">
+                <!--               false是0,true是1   1故障红色   0正常绿色-->
+                <div class="status-icon" [ngStyle]="{background:(dataSource[title+'超速测试超速故障']?.value==true)?'#FF365F':'#6ABE04'}"></div>
+                超速故障
+            </div>
+        </div>
+        <div class="content-detail-info">
+            <div class="content-detail-info-switch">速度异常测试
+                <nz-switch *ngIf="dataSource[title+'速度异常测试启动/停止']" [(ngModel)]="dataSource[title+'速度异常测试启动/停止'].value" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+                <nz-switch *ngIf="!dataSource[title+'速度异常测试启动/停止']" [nzControl]="true" nzSize="small" style="margin-left: 10px;"></nz-switch>
+            </div>
+            <div>
+                <div class="content-detail-info-speed">速度异常测试测速机(m/s)  <span>{{dataSource[title+'速度异常测试测速机']?.value}}</span></div>
+                <div class="content-detail-info-speed">速度异常测试编码器(m/s)  <span>{{dataSource[title+'速度异常测试编码器']?.value}}</span></div>
+            </div>
+            <div style="margin-left: 110px;display: flex;align-items: center">
+                <div class="status-icon" *ngIf="title=='上站驱动'" [ngStyle]="{background:(dataSource[title+'速度异常测试速度异常状态显示']?.value==true)?'#FF365F':'#6ABE04'}"></div>
+                <div class="status-icon" *ngIf="title=='中站驱动'" [ngStyle]="{background:(dataSource[title+'速度异常测试超速故障']?.value==true)?'#FF365F':'#6ABE04'}"></div>
+                超速故障
+            </div>
+        </div>
+    </div>
+</div>

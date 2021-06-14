@@ -1,0 +1,10 @@
+::ng-deep{
+  a[href='https://leafletjs.com']{
+    display: none;
+  }
+}
+.cable-move-container::-webkit-scrollbar{
+  width:0;
+  opacity:0;
+  -webkit-overflow-scrolling: touch;
+}
